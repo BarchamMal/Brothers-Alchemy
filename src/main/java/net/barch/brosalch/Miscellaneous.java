@@ -16,8 +16,8 @@ public class Miscellaneous {
     public static final int TEA_TIME = (5*TICKS)*SECONDS;
     public static final int COOKIE_TIME = (1*TICKS)*SECONDS;
 
-    public static final int TEA_STRENGTH = 2;
-    public static final int COOKIE_STRENGTH = 0;
+    public static final int TEA_STRENGTH = 0;
+    public static final int COOKIE_STRENGTH = 2;
 
     public static final Item TEACUP = new Item(new FabricItemSettings());
 
