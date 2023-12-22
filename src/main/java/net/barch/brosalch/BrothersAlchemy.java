@@ -1,6 +1,7 @@
 package net.barch.brosalch;
 
 import net.barch.brosalch.Glue.ItemGrouper;
+import net.barch.brosalch.MagicIngredients.MagicIngredients;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
@@ -42,6 +43,9 @@ public class BrothersAlchemy implements ModInitializer {
 				.icon(() -> new ItemStack(TEACUP))
 				.displayName(Text.translatable("itemGroup."+NAMESPACE+".brothers-alchemy"))
 				.build());
+
+		MagicIngredients.RegisterAll();
+		Miscellaneous.RegisterAll();
 
 	}
 }
