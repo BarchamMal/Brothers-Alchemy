@@ -40,7 +40,7 @@ public class BrothersAlchemy implements ModInitializer {
 
 		Registry.register(Registries.ITEM_GROUP, BROTHERS_ALCHEMY_GROUP, FabricItemGroup.builder()
 				.icon(() -> new ItemStack(TEACUP))
-				.displayName(Text.translatable("itemGroup."+NAMESPACE+".brothers_alchemy"))
+				.displayName(Text.translatable("itemGroup."+NAMESPACE+".brothers-alchemy"))
 				.build());
 
 	}

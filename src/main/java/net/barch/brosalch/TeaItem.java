@@ -37,6 +37,8 @@ public class TeaItem extends Item {
             return stack;
         }
 
+        stack.decrement(1);
+
         if (stack.getCount() < 1) {
             return TEACUP.getDefaultStack();
         }
