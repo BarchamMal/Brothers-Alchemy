@@ -22,5 +22,5 @@ This mod adds magic in a simple way, based on food.
 * If you wish to add something else then please open an [issue](https://github.com/BarchamMal/Brothers-Alchemy/issues/new) about it.
 
 ## Credits
-- Art: BarchamMal
+- Art: BarchamMal, Vectorwing
 - Code: BarchamMal

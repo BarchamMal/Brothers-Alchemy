@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+      "layer0": "brothers-alchemy:item/mushroom_tea",
+      "layer1": "brothers-alchemy:item/tea"
+  }
+}
