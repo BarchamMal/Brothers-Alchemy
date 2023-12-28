@@ -2,6 +2,7 @@ package net.barch.brosalch;
 
 import net.barch.brosalch.Glue.ItemGrouper;
 import net.barch.brosalch.MagicIngredients.MagicIngredients;
+import net.barch.brosalch.Miscellaneous.Miscellaneous;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
@@ -16,7 +17,7 @@ import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static net.barch.brosalch.Miscellaneous.TEACUP;
+import static net.barch.brosalch.Miscellaneous.Miscellaneous.TEACUP;
 
 public class BrothersAlchemy implements ModInitializer {
 	// This logger is used to write text to the console and the log file.

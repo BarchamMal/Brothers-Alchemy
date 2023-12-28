@@ -1,4 +1,4 @@
-package net.barch.brosalch;
+package net.barch.brosalch.Miscellaneous;
 
 import net.barch.brosalch.Glue.ItemGroupItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -9,9 +9,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-import static net.barch.brosalch.BrothersAlchemy.BAItemGrouper;
-import static net.barch.brosalch.BrothersAlchemy.NAMESPACE;
-import static net.barch.brosalch.MagicIngredients.MelonIngredients.MELON_EXTRACT;
+import static net.barch.brosalch.BrothersAlchemy.*;
 
 public class Miscellaneous {
 
@@ -24,7 +22,9 @@ public class Miscellaneous {
     public static final int TEA_STRENGTH = 0;
     public static final int COOKIE_STRENGTH = 2;
 
+
     public static final Item TEACUP = new Item(new FabricItemSettings());
+    public static final Item DIAMOND_PULPIFIER = new Item(new FabricItemSettings().maxCount(1));
 
 
 
@@ -35,11 +35,13 @@ public class Miscellaneous {
 
     public static void RegisterItems() {
         Registry.register(Registries.ITEM, new Identifier(NAMESPACE, "teacup"), TEACUP);
+        Registry.register(Registries.ITEM, new Identifier(NAMESPACE, "diamond_pulpifier"), DIAMOND_PULPIFIER);
+
+        LOGGER.info(Registries.ITEM.getId(DIAMOND_PULPIFIER.getRecipeRemainder()).toTranslationKey());
     }
 
     public static void GroupItems() {
-        BAItemGrouper.GroupItem(TEACUP, new ItemGroupItem[]{new ItemGroupItem(ItemGroups.INGREDIENTS, Items.GLASS_BOTTLE
-        )});
+        BAItemGrouper.GroupItem(TEACUP, new ItemGroupItem[]{new ItemGroupItem(ItemGroups.INGREDIENTS, Items.GLASS_BOTTLE)});
     }
 
 

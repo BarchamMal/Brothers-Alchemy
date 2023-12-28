@@ -1,7 +1,7 @@
 package net.barch.brosalch.MagicIngredients;
 
 import net.barch.brosalch.Glue.ItemGroupItem;
-import net.barch.brosalch.Miscellaneous;
+import net.barch.brosalch.Miscellaneous.Miscellaneous;
 import net.barch.brosalch.TeaItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.entity.effect.StatusEffectInstance;

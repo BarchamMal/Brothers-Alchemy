@@ -14,7 +14,7 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 
-import static net.barch.brosalch.Miscellaneous.TEACUP;
+import static net.barch.brosalch.Miscellaneous.Miscellaneous.TEACUP;
 
 public class TeaItem extends Item {
     private static final int MAX_USE_TIME = 32;
