@@ -1,5 +1,7 @@
 package net.barch.brosalch.Spells;
 
+import net.minecraft.client.item.TooltipContext;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -10,17 +12,15 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.Registries;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.TypedActionResult;
+import net.minecraft.text.Text;
+import net.minecraft.util.*;
 import net.minecraft.util.crash.CrashException;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.function.Consumer;
+import java.util.List;
 
 import static net.barch.brosalch.BrothersAlchemy.LOGGER;
-import static net.barch.brosalch.Miscellaneous.Miscellaneous.TEACUP;
 
 public class SprayBottleItem extends Item {
     public SprayBottleItem(Settings settings) {
@@ -28,6 +28,17 @@ public class SprayBottleItem extends Item {
     }
 
     private NbtCompound nbtCompound;
+
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+        nbtCompound = stack.getOrCreateNbt();
+
+        if (readNbt(nbtCompound).getItem() != Items.AIR) {
+            ItemStack spell = readNbt(nbtCompound);
+            tooltip.add(Text.translatable(spell.getTranslationKey()).formatted(Formatting.BLUE));
+            tooltip.add(Text.translatable("item.brothers-alchemy.spray_bottle.uses").append(" " + (spell.getMaxDamage() - spell.getDamage())).formatted(Formatting.GREEN));
+        }
+    }
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
@@ -88,10 +99,8 @@ public class SprayBottleItem extends Item {
 
         nbtCompound = handStack.getOrCreateNbt();
 
-        if (readNbt(handStack.getNbt()).getItem() == Items.AIR) {
-
+        if (readNbt(handStack.getNbt()).getItem() == Items.AIR || context.getPlayer().isSneaking()) {
             return ActionResult.FAIL;
-
         }
 
         ItemStack spellStack = readNbt(nbtCompound);
