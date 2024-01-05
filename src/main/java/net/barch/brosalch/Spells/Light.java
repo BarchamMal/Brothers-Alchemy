@@ -32,13 +32,13 @@ public class Light extends Spell{
 
         // Spray bottles use _much_ less durability...
         if (user.getStackInHand(context.getHand()).getItem() == Spells.SPRAY_BOTTLE) {
-            damageSpray(itemStack);
+            damageSpray(itemStack, context.getPlayer());
             ((SpellExtractItem)itemStack.getItem()).onBreak(itemStack, user.getWorld(), user);
             return ActionResult.success(true);
         }
 
         //... than raw spells.
-        damageSolo(user.getStackInHand(hand));
+        damageSolo(user.getStackInHand(hand), context.getPlayer());
         ((SpellExtractItem)user.getStackInHand(hand).getItem()).onBreak(user.getStackInHand(hand), user.getWorld(), user);
         return ActionResult.success(true);
     }
@@ -49,12 +49,12 @@ public class Light extends Spell{
         entity.addStatusEffect(statusEffect);
 
         if (user.getStackInHand(hand).getItem() == Spells.SPRAY_BOTTLE) {
-            damageSpray(stack);
+            damageSpray(stack, user);
             ((SpellExtractItem)stack.getItem()).onBreak(stack, user.getWorld(), user);
             return ActionResult.SUCCESS;
         }
 
-        damageSolo(stack);
+        damageSolo(stack, user);
         ((SpellExtractItem)stack.getItem()).onBreak(stack, user.getWorld(), user);
         return ActionResult.SUCCESS;
     }
@@ -65,13 +65,13 @@ public class Light extends Spell{
         user.addStatusEffect(statusEffect);
 
         if (user.getStackInHand(hand).getItem() == Spells.SPRAY_BOTTLE) {
-            damageSpray(itemStack);
+            damageSpray(itemStack, user);
             ((SpellExtractItem)itemStack.getItem()).onBreak(itemStack, user.getWorld(), user);
 
             return TypedActionResult.success(user.getStackInHand(hand));
         }
 
-        damageSolo(user.getStackInHand(hand));
+        damageSolo(user.getStackInHand(hand), user);
         ((SpellExtractItem)user.getStackInHand(hand).getItem()).onBreak(user.getStackInHand(hand), user.getWorld(), user);
         return TypedActionResult.success(user.getStackInHand(hand));
     }

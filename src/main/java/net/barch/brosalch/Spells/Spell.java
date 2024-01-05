@@ -22,12 +22,12 @@ public class Spell {
     }
 
 
-    public void damageSolo(ItemStack stack) {
-        stack.setDamage(stack.getDamage() + 8);
+    public void damageSolo(ItemStack stack, PlayerEntity user) {
+        if (!user.isCreative()) stack.setDamage(stack.getDamage() + 8);
     }
 
-    public void damageSpray(ItemStack stack) {
-        stack.setDamage(stack.getDamage() + 1);
+    public void damageSpray(ItemStack stack, PlayerEntity user) {
+        if (!user.isCreative()) stack.setDamage(stack.getDamage() + 1);
     }
 
     public int getSpellStatus() {
