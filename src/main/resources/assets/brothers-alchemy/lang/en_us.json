@@ -1,6 +1,7 @@
 {
 
   "itemGroup.brothers-alchemy.brothers-alchemy": "Brothers Alchemy",
+  "itemGroup.brothers-alchemy.spells": "Spells",
 
   "item.brothers-alchemy.beet_tea":"Beet Broth",
   "item.brothers-alchemy.beet_extract":"Beet Extract",
@@ -58,5 +59,12 @@
   "item.brothers-alchemy.apple_extract":"Apple Extract",
   "item.brothers-alchemy.apple_pulp":"Apple Pulp",
   "item.brothers-alchemy.apple_cookie":"Apple Cookie",
-  "item.brothers-alchemy.teacup":"Teacup"
+
+  "item.brothers-alchemy.diamond_pulpifier":"Pulpifier",
+  "item.brothers-alchemy.spray_bottle": "Spray Bottle",
+  "item.brothers-alchemy.light_spell":"Light in a Bottle",
+  "item.brothers-alchemy.teacup":"Teacup",
+
+  "item.brothers-alchemy.spray_bottle.uses": "Uses left:"
+  
 }
