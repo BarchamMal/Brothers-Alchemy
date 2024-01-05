@@ -22,6 +22,10 @@ public class Miscellaneous {
     public static final int TEA_STRENGTH = 0;
     public static final int COOKIE_STRENGTH = 2;
 
+    public static final int POSITIVE = 1;
+    public static final int NEUTRAL = 0;
+    public static final int NEGATIVE = -1;
+
 
     public static final Item TEACUP = new Item(new FabricItemSettings());
     public static final Item DIAMOND_PULPIFIER = new Item(new FabricItemSettings().maxCount(1));
