@@ -3,6 +3,7 @@ package net.barch.brosalch;
 import net.barch.brosalch.Glue.ItemGrouper;
 import net.barch.brosalch.MagicIngredients.MagicIngredients;
 import net.barch.brosalch.Miscellaneous.Miscellaneous;
+import net.barch.brosalch.Spells.Spells;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
@@ -47,6 +48,7 @@ public class BrothersAlchemy implements ModInitializer {
 
 		MagicIngredients.RegisterAll();
 		Miscellaneous.RegisterAll();
+		Spells.RegisterAll();
 
 	}
 }
