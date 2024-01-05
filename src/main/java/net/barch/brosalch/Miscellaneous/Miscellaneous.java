@@ -28,7 +28,7 @@ public class Miscellaneous {
 
 
     public static final Item TEACUP = new Item(new FabricItemSettings());
-    public static final Item DIAMOND_PULPIFIER = new Item(new FabricItemSettings().maxCount(1));
+    public static final Item DIAMOND_PULPIFIER = new Item(new FabricItemSettings().maxCount(1).recipeRemainder(TEACUP));
 
 
 
@@ -46,6 +46,8 @@ public class Miscellaneous {
 
     public static void GroupItems() {
         BAItemGrouper.GroupItem(TEACUP, new ItemGroupItem[]{new ItemGroupItem(ItemGroups.INGREDIENTS, Items.GLASS_BOTTLE)});
+        BAItemGrouper.GroupItem(DIAMOND_PULPIFIER, new ItemGroupItem[]{new ItemGroupItem(ItemGroups.TOOLS, Items.BRUSH)});
+
     }
 
 
