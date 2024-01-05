@@ -63,6 +63,8 @@
   "item.brothers-alchemy.diamond_pulpifier":"Pulpifier",
   "item.brothers-alchemy.spray_bottle": "Spray Bottle",
   "item.brothers-alchemy.light_spell":"Light in a Bottle",
+  "item.brothers-alchemy.fire_spell":"Fire in a Bottle",
+  "item.brothers-alchemy.air_spell":"Air in a Bottle",
   "item.brothers-alchemy.teacup":"Teacup",
 
   "item.brothers-alchemy.spray_bottle.uses": "Uses left:"
