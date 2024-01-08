@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "tea",
+  "ingredients": [
+    {
+      "item": "brothers-alchemy:teacup"
+    },
+    {
+      "item": "brothers-alchemy:apple_pulp"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "item": "brothers-alchemy:apple_tea"
+  }
+}

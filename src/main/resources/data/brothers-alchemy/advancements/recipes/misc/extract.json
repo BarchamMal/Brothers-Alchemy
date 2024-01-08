@@ -1,0 +1,41 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_bottle": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:glass_bottle"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_bottle"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "brothers-alchemy:crafting/extracting/apple_extract",
+      "brothers-alchemy:crafting/extracting/beet_extract",
+      "brothers-alchemy:crafting/extracting/carrot_extract",
+      "brothers-alchemy:crafting/extracting/chorus_extract",
+      "brothers-alchemy:crafting/extracting/cocoa_extract",
+      "brothers-alchemy:crafting/extracting/glow_berry_extract",
+      "brothers-alchemy:crafting/extracting/melon_extract",
+      "brothers-alchemy:crafting/extracting/mushroom_extract",
+      "brothers-alchemy:crafting/extracting/potato_extract",
+      "brothers-alchemy:crafting/extracting/pumpkin_extract",
+      "brothers-alchemy:crafting/extracting/seaweed_extract",
+      "brothers-alchemy:crafting/extracting/sugar_extract",
+      "brothers-alchemy:crafting/extracting/sweet_berry_extract",
+      "brothers-alchemy:crafting/extracting/wheat_extract"
+    ]
+  },
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "G": {
+      "item": "minecraft:granite"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    },
+    "S": {
+      "item": "minecraft:smooth_stone"
+    }
+  },
+  "pattern": [
+    "GGG",
+    "SDS",
+    "SSS"
+  ],
+  "result": {
+    "item": "brothers-alchemy:diamond_pulpifier"
+  },
+  "show_notification": true
+}

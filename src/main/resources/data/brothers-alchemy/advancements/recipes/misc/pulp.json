@@ -1,0 +1,41 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_pulpifier": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "brothers-alchemy:diamond_pulpifier"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_pulpifier"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "brothers-alchemy:crafting/pulpifying/apple_pulp",
+      "brothers-alchemy:crafting/pulpifying/beet_pulp",
+      "brothers-alchemy:crafting/pulpifying/carrot_pulp",
+      "brothers-alchemy:crafting/pulpifying/chorus_pulp",
+      "brothers-alchemy:crafting/pulpifying/cocoa_pulp",
+      "brothers-alchemy:crafting/pulpifying/glow_berry_pulp",
+      "brothers-alchemy:crafting/pulpifying/melon_pulp",
+      "brothers-alchemy:crafting/pulpifying/mushroom_pulp",
+      "brothers-alchemy:crafting/pulpifying/potato_pulp",
+      "brothers-alchemy:crafting/pulpifying/pumpkin_pulp",
+      "brothers-alchemy:crafting/pulpifying/seaweed_pulp",
+      "brothers-alchemy:crafting/pulpifying/sugar_pulp",
+      "brothers-alchemy:crafting/pulpifying/sweet_berry_pulp",
+      "brothers-alchemy:crafting/pulpifying/wheat_pulp"
+    ]
+  },
+  "sends_telemetry_event": false
+}

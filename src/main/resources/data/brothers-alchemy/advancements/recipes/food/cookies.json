@@ -1,0 +1,41 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_wheat": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:wheat"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_wheat"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "brothers-alchemy:crafting/cookying/apple_cookie",
+      "brothers-alchemy:crafting/cookying/beet_cookie",
+      "brothers-alchemy:crafting/cookying/carrot_cookie",
+      "brothers-alchemy:crafting/cookying/chorus_cookie",
+      "brothers-alchemy:crafting/cookying/cocoa_cookie",
+      "brothers-alchemy:crafting/cookying/glow_berry_cookie",
+      "brothers-alchemy:crafting/cookying/melon_cookie",
+      "brothers-alchemy:crafting/cookying/mushroom_cookie",
+      "brothers-alchemy:crafting/cookying/potato_cookie",
+      "brothers-alchemy:crafting/cookying/pumpkin_cookie",
+      "brothers-alchemy:crafting/cookying/seaweed_cookie",
+      "brothers-alchemy:crafting/cookying/sugar_cookie",
+      "brothers-alchemy:crafting/cookying/sweet_berry_cookie",
+      "brothers-alchemy:crafting/cookying/wheat_cookie"
+    ]
+  },
+  "sends_telemetry_event": false
+}
