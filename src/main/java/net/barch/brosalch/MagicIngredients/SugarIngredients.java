@@ -9,6 +9,7 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.FoodComponent;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
+import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -32,7 +33,7 @@ SugarIngredients {
     public static final Item SUGAR_PULP = new Item(new FabricItemSettings());
     public static final Item SUGAR_COOKIE = new Item(new FabricItemSettings().food(SUGAR_COOKIE_FOOD));
     public static final TeaItem SUGAR_TEA = new TeaItem(new FabricItemSettings(), SUGAR_TEA_EFFECT);
-    public static final Item SUGAR_EXTRACT = new Item(new FabricItemSettings());
+    public static final Item SUGAR_EXTRACT = new Item(new FabricItemSettings().recipeRemainder(Items.GLASS_BOTTLE));
 
 
     public static void RegisterAll() {

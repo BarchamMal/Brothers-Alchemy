@@ -9,6 +9,7 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.FoodComponent;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
+import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -31,7 +32,7 @@ public class MushroomIngredients {
     public static final Item MUSHROOM_PULP = new Item(new FabricItemSettings());
     public static final Item MUSHROOM_COOKIE = new Item(new FabricItemSettings().food(MUSHROOM_COOKIE_FOOD));
     public static final TeaItem MUSHROOM_TEA = new TeaItem(new FabricItemSettings(), MUSHROOM_TEA_EFFECT);
-    public static final Item MUSHROOM_EXTRACT = new Item(new FabricItemSettings());
+    public static final Item MUSHROOM_EXTRACT = new Item(new FabricItemSettings().recipeRemainder(Items.GLASS_BOTTLE));
 
 
     public static void RegisterAll() {

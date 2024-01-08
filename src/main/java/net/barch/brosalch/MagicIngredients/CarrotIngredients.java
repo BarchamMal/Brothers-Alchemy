@@ -28,7 +28,7 @@ public class CarrotIngredients {
     public static final Item CARROT_PULP = new Item(new FabricItemSettings());
     public static final Item CARROT_COOKIE = new Item(new FabricItemSettings().food(CARROT_COOKIE_FOOD));
     public static final TeaItem CARROT_TEA = new TeaItem(new FabricItemSettings(), CARROT_TEA_EFFECT);
-    public static final Item CARROT_EXTRACT = new Item(new FabricItemSettings());
+    public static final Item CARROT_EXTRACT = new Item(new FabricItemSettings().recipeRemainder(Items.GLASS_BOTTLE));
 
 
     public static void RegisterAll() {
