@@ -105,7 +105,7 @@ public class SprayBottleItem extends Item {
 
         ItemStack spellStack = readNbt(nbtCompound);
 
-        ((SpellExtractItem)spellStack.getItem()).useOnBlock(context, readNbt(nbtCompound));
+        ((SpellExtractItem)spellStack.getItem()).useOnBlock(context, spellStack);
 
         writeNbt(spellStack, nbtCompound);
 
