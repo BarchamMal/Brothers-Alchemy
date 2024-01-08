@@ -19,7 +19,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import static net.barch.brosalch.Miscellaneous.Miscellaneous.TEACUP;
-import static net.barch.brosalch.Spells.Spells.LIGHT_SPELL;
+import static net.barch.brosalch.Spells.Spells.LIGHT_EXTRACT;
 
 public class BrothersAlchemy implements ModInitializer {
 	// This logger is used to write text to the console and the log file.
@@ -49,7 +49,7 @@ public class BrothersAlchemy implements ModInitializer {
 				.build());
 
 		Registry.register(Registries.ITEM_GROUP, SPELLS_GROUP, FabricItemGroup.builder()
-				.icon(() -> new ItemStack(LIGHT_SPELL))
+				.icon(() -> new ItemStack(LIGHT_EXTRACT))
 				.displayName(Text.translatable("itemGroup."+NAMESPACE+".spells"))
 				.build());
 

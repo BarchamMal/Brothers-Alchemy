@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-      "layer0": "brothers-alchemy:item/fire_spell",
+      "layer0": "brothers-alchemy:item/air_extract",
       "layer1": "brothers-alchemy:item/spell"
   }
 }

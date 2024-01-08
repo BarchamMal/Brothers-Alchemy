@@ -62,9 +62,14 @@
 
   "item.brothers-alchemy.diamond_pulpifier":"Pulpifier",
   "item.brothers-alchemy.spray_bottle": "Spray Bottle",
-  "item.brothers-alchemy.light_spell":"Light in a Bottle",
-  "item.brothers-alchemy.fire_spell":"Fire in a Bottle",
-  "item.brothers-alchemy.air_spell":"Air in a Bottle",
+  "item.brothers-alchemy.light_extract":"Light in a Bottle",
+  "item.brothers-alchemy.fire_extract":"Fire in a Bottle",
+  "item.brothers-alchemy.blessing_extract":"Blessing in a Bottle",
+  "item.brothers-alchemy.water_extract":"Water in a Bottle",
+  "item.brothers-alchemy.air_extract":"Air in a Bottle",
+  "item.brothers-alchemy.healing_extract":"Healing in a Bottle",
+  "item.brothers-alchemy.earth_extract":"Earth in a Bottle",
+  "item.brothers-alchemy.energy_extract":"Energy in a Bottle",
   "item.brothers-alchemy.teacup":"Teacup",
 
   "item.brothers-alchemy.spray_bottle.uses": "Uses left:"
