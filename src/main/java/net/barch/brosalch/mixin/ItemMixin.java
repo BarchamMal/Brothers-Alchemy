@@ -10,7 +10,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import static net.barch.brosalch.BrothersAlchemy.LOGGER;
 
 @Mixin(Item.class)
 public abstract class ItemMixin {
@@ -20,7 +19,6 @@ public abstract class ItemMixin {
     private void init(CallbackInfoReturnable<Item> cir) {
         if (this.getDefaultStack().isIn(Tags.CRAFTING_TOOLS)) {
             cir.setReturnValue(this.getDefaultStack().getItem());
-            LOGGER.info("worked");
         }
     }
 }
