@@ -15,6 +15,8 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
+import static net.barch.brosalch.Miscellaneous.Miscellaneous.SPELL_LVL_0;
+
 
 public class Air extends Spell {
     public Air(int spellStatus, String spellType) {
@@ -28,34 +30,41 @@ public class Air extends Spell {
 
     @Override
     public ActionResult useEntity(ItemStack stack, PlayerEntity user, LivingEntity entity, Hand hand) {
-        StatusEffectInstance statusEffect = new StatusEffectInstance(StatusEffects.LEVITATION, 20*60, 0);
+        StatusEffectInstance statusEffect = new StatusEffectInstance(StatusEffects.SLOW_FALLING, SPELL_LVL_0, 0);
         entity.addStatusEffect(statusEffect);
 
         if (user.getStackInHand(hand).getItem() == Spells.SPRAY_BOTTLE) {
             damageSpray(stack, user);
             ((SpellExtractItem)stack.getItem()).onBreak(stack, user.getWorld(), user);
+
+            user.getItemCooldownManager().set(user.getStackInHand(hand).getItem(),  10);
             return ActionResult.SUCCESS;
         }
 
         damageSolo(stack, user);
         ((SpellExtractItem)stack.getItem()).onBreak(stack, user.getWorld(), user);
+
+        user.getItemCooldownManager().set(user.getStackInHand(hand).getItem(),  10);
         return ActionResult.SUCCESS;
     }
 
     @Override
     public TypedActionResult<ItemStack> useAir(World world, PlayerEntity user, Hand hand, @Nullable ItemStack itemStack) {
-        StatusEffectInstance statusEffect = new StatusEffectInstance(StatusEffects.SLOW_FALLING, 40*60, 1);
+        StatusEffectInstance statusEffect = new StatusEffectInstance(StatusEffects.SLOW_FALLING, SPELL_LVL_0, 0);
         user.addStatusEffect(statusEffect);
 
         if (user.getStackInHand(hand).getItem() == Spells.SPRAY_BOTTLE) {
             damageSpray(itemStack, user);
             ((SpellExtractItem)itemStack.getItem()).onBreak(itemStack, user.getWorld(), user);
 
+            user.getItemCooldownManager().set(user.getStackInHand(hand).getItem(), 10);
             return TypedActionResult.success(user.getStackInHand(hand));
         }
 
         damageSolo(user.getStackInHand(hand), user);
         ((SpellExtractItem)user.getStackInHand(hand).getItem()).onBreak(user.getStackInHand(hand), user.getWorld(), user);
+
+        user.getItemCooldownManager().set(user.getStackInHand(hand).getItem(),  10);
         return TypedActionResult.success(user.getStackInHand(hand));
     }
 }
