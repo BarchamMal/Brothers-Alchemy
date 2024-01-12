@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+      "layer0": "brothers-alchemy:item/bolt_of_ice"
+  }
+}

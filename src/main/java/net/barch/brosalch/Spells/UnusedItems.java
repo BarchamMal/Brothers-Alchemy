@@ -17,6 +17,6 @@ public class UnusedItems {
     }
 
     public static void RegisterItems() {
-        Registry.register(Registries.ITEM, new Identifier(NAMESPACE, "ray_of_frost_item"), RAY_OF_FROST);
+        Registry.register(Registries.ITEM, new Identifier(NAMESPACE, "bolt_of_ice_item"), RAY_OF_FROST);
     }
 }
