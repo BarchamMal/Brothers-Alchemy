@@ -26,7 +26,7 @@ public class Miscellaneous {
     public static final int NEUTRAL = 0;
     public static final int NEGATIVE = -1;
 
-    public static final int SPELL_LVL_0 = 15*TICKS;
+    public static final int SPELL_LVL_0 = 20*TICKS;
     public static final int SPELL_LVL_1 = 30*TICKS;
     public static final int SPELL_LVL_2 = 1*TICKS*SECONDS;
     public static final int SPELL_LVL_3 = 2*TICKS*SECONDS;

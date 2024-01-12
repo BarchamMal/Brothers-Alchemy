@@ -14,6 +14,10 @@ public class Tags {
 
     public static final TagKey<Item> CRAFTING_TOOLS = ofItem(NAMESPACE,"crafting_tools");
 
+    public static final TagKey<Biome> COLD = ofBiome("c", "climate_cold");
+    public static final TagKey<Biome> HOT = ofBiome("c", "climate_hot");
+    public static final TagKey<Biome> TEMPERATE = ofBiome("c", "climate_temperate");
+
 
     private static TagKey<Biome> ofBiome(String namespace, String path) {
         return TagKey.of(RegistryKeys.BIOME, new Identifier(namespace, path));

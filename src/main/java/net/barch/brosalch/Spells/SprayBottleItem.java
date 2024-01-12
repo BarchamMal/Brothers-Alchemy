@@ -1,7 +1,6 @@
 package net.barch.brosalch.Spells;
 
 import net.minecraft.client.item.TooltipContext;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -151,7 +150,7 @@ public class SprayBottleItem extends Item {
         nbt.remove("Spell");
     }
 
-    private ItemStack readNbt(NbtCompound nbt) {
+    public ItemStack readNbt(NbtCompound nbt) {
 
         try {
             NbtCompound nbt1 = nbt.getCompound("Spell");

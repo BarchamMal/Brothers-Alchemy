@@ -13,6 +13,8 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
+import static net.barch.brosalch.BrothersAlchemy.LOGGER;
+
 public class SpellExtractItem extends Item {
 
     private final Spell SPELL;
@@ -45,7 +47,9 @@ public class SpellExtractItem extends Item {
 
     @Override
     public ActionResult useOnEntity(ItemStack stack, PlayerEntity user, LivingEntity entity, Hand hand) {
-        return this.SPELL.useEntity(stack, user, entity, hand);
+        if (!user.getItemCooldownManager().isCoolingDown(user.getStackInHand(hand).getItem()))
+            return this.SPELL.useEntity(stack, user, entity, hand);
+        return ActionResult.FAIL;
     }
 
     @Override
