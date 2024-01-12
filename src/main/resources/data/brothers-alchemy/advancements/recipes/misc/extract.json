@@ -21,6 +21,23 @@
   ],
   "rewards": {
     "recipes": [
+      "brothers-alchemy:crafting/extracting/air_extract",
+      "brothers-alchemy:crafting/extracting/blessing_extract",
+      "brothers-alchemy:crafting/extracting/cold_extract",
+      "brothers-alchemy:crafting/extracting/curse_extract",
+      "brothers-alchemy:crafting/extracting/darkness_extract",
+      "brothers-alchemy:crafting/extracting/drought_extract",
+      "brothers-alchemy:crafting/extracting/earth_extract",
+      "brothers-alchemy:crafting/extracting/energy_extract",
+      "brothers-alchemy:crafting/extracting/exhaustion_extract",
+      "brothers-alchemy:crafting/extracting/fire_extract",
+      "brothers-alchemy:crafting/extracting/healing_extract",
+      "brothers-alchemy:crafting/extracting/harming_extract",
+      "brothers-alchemy:crafting/extracting/light_extract",
+      "brothers-alchemy:crafting/extracting/void_extract",
+      "brothers-alchemy:crafting/extracting/water_extract",
+      "brothers-alchemy:crafting/extracting/weight_extract",
+
       "brothers-alchemy:crafting/extracting/apple_extract",
       "brothers-alchemy:crafting/extracting/beet_extract",
       "brothers-alchemy:crafting/extracting/carrot_extract",
