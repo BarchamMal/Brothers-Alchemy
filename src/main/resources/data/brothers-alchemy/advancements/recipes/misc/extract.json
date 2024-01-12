@@ -1,0 +1,58 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_bottle": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:glass_bottle"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_bottle"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "brothers-alchemy:crafting/extracting/air_extract",
+      "brothers-alchemy:crafting/extracting/blessing_extract",
+      "brothers-alchemy:crafting/extracting/cold_extract",
+      "brothers-alchemy:crafting/extracting/curse_extract",
+      "brothers-alchemy:crafting/extracting/darkness_extract",
+      "brothers-alchemy:crafting/extracting/drought_extract",
+      "brothers-alchemy:crafting/extracting/earth_extract",
+      "brothers-alchemy:crafting/extracting/energy_extract",
+      "brothers-alchemy:crafting/extracting/exhaustion_extract",
+      "brothers-alchemy:crafting/extracting/fire_extract",
+      "brothers-alchemy:crafting/extracting/healing_extract",
+      "brothers-alchemy:crafting/extracting/harming_extract",
+      "brothers-alchemy:crafting/extracting/light_extract",
+      "brothers-alchemy:crafting/extracting/void_extract",
+      "brothers-alchemy:crafting/extracting/water_extract",
+      "brothers-alchemy:crafting/extracting/weight_extract",
+
+      "brothers-alchemy:crafting/extracting/apple_extract",
+      "brothers-alchemy:crafting/extracting/beet_extract",
+      "brothers-alchemy:crafting/extracting/carrot_extract",
+      "brothers-alchemy:crafting/extracting/chorus_extract",
+      "brothers-alchemy:crafting/extracting/cocoa_extract",
+      "brothers-alchemy:crafting/extracting/glow_berry_extract",
+      "brothers-alchemy:crafting/extracting/melon_extract",
+      "brothers-alchemy:crafting/extracting/mushroom_extract",
+      "brothers-alchemy:crafting/extracting/potato_extract",
+      "brothers-alchemy:crafting/extracting/pumpkin_extract",
+      "brothers-alchemy:crafting/extracting/seaweed_extract",
+      "brothers-alchemy:crafting/extracting/sugar_extract",
+      "brothers-alchemy:crafting/extracting/sweet_berry_extract",
+      "brothers-alchemy:crafting/extracting/wheat_extract"
+    ]
+  },
+  "sends_telemetry_event": false
+}

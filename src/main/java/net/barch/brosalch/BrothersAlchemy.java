@@ -1,6 +1,9 @@
 package net.barch.brosalch;
 
 import net.barch.brosalch.Glue.ItemGrouper;
+import net.barch.brosalch.MagicIngredients.MagicIngredients;
+import net.barch.brosalch.Miscellaneous.Miscellaneous;
+import net.barch.brosalch.Spells.Spells;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
@@ -15,7 +18,8 @@ import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static net.barch.brosalch.Miscellaneous.TEACUP;
+import static net.barch.brosalch.Miscellaneous.Miscellaneous.TEACUP;
+import static net.barch.brosalch.Spells.Spells.LIGHT_EXTRACT;
 
 public class BrothersAlchemy implements ModInitializer {
 	// This logger is used to write text to the console and the log file.
@@ -26,6 +30,7 @@ public class BrothersAlchemy implements ModInitializer {
 	public static final String NAMESPACE = "brothers-alchemy";
 
 	public static final RegistryKey<ItemGroup> BROTHERS_ALCHEMY_GROUP = RegistryKey.of(RegistryKeys.ITEM_GROUP, new Identifier(NAMESPACE, "brothers_alchemy"));
+	public static final RegistryKey<ItemGroup> SPELLS_GROUP = RegistryKey.of(RegistryKeys.ITEM_GROUP, new Identifier(NAMESPACE, "spells"));
 
 
 	public static final ItemGrouper BAItemGrouper = new ItemGrouper(BROTHERS_ALCHEMY_GROUP);
@@ -42,6 +47,15 @@ public class BrothersAlchemy implements ModInitializer {
 				.icon(() -> new ItemStack(TEACUP))
 				.displayName(Text.translatable("itemGroup."+NAMESPACE+".brothers-alchemy"))
 				.build());
+
+		Registry.register(Registries.ITEM_GROUP, SPELLS_GROUP, FabricItemGroup.builder()
+				.icon(() -> new ItemStack(LIGHT_EXTRACT))
+				.displayName(Text.translatable("itemGroup."+NAMESPACE+".spells"))
+				.build());
+
+		MagicIngredients.RegisterAll();
+		Miscellaneous.RegisterAll();
+		Spells.RegisterAll();
 
 	}
 }

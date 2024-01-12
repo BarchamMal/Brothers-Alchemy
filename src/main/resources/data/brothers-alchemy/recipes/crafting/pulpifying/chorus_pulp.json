@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "pulp",
+  "ingredients": [
+    {
+      "item": "minecraft:chorus_fruit"
+    },
+    {
+      "item": "brothers-alchemy:diamond_pulpifier"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "item": "brothers-alchemy:chorus_pulp"
+  }
+}

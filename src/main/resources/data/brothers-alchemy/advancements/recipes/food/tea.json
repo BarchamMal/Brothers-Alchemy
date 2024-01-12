@@ -1,0 +1,41 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_teacup": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "brothers-alchemy:teacup"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_teacup"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "brothers-alchemy:crafting/steeping/apple_tea",
+      "brothers-alchemy:crafting/steeping/beet_tea",
+      "brothers-alchemy:crafting/steeping/carrot_tea",
+      "brothers-alchemy:crafting/steeping/chorus_tea",
+      "brothers-alchemy:crafting/steeping/cocoa_tea",
+      "brothers-alchemy:crafting/steeping/glow_berry_tea",
+      "brothers-alchemy:crafting/steeping/melon_tea",
+      "brothers-alchemy:crafting/steeping/mushroom_tea",
+      "brothers-alchemy:crafting/steeping/potato_tea",
+      "brothers-alchemy:crafting/steeping/pumpkin_tea",
+      "brothers-alchemy:crafting/steeping/seaweed_tea",
+      "brothers-alchemy:crafting/steeping/sugar_tea",
+      "brothers-alchemy:crafting/steeping/sweet_berry_tea",
+      "brothers-alchemy:crafting/steeping/wheat_tea"
+    ]
+  },
+  "sends_telemetry_event": false
+}

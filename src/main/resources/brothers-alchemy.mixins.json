@@ -3,7 +3,8 @@
 	"package": "net.barch.brosalch.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
-		"ExampleMixin"
+		"ExampleMixin",
+		"ItemMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
