@@ -70,7 +70,25 @@
   "item.brothers-alchemy.healing_extract":"Healing in a Bottle",
   "item.brothers-alchemy.earth_extract":"Earth in a Bottle",
   "item.brothers-alchemy.energy_extract":"Energy in a Bottle",
+  "item.brothers-alchemy.darkness_extract":"Darkness in a Bottle",
+  "item.brothers-alchemy.cold_extract":"Cold in a Bottle",
+  "item.brothers-alchemy.curse_extract":"Curse in a Bottle",
+  "item.brothers-alchemy.drought_extract":"Drought in a Bottle",
+  "item.brothers-alchemy.weight_extract": "Weight in a Bottle",
+  "item.brothers-alchemy.harming_extract":"Harming in a Bottle",
+  "item.brothers-alchemy.void_extract":"Void in a Bottle",
+  "item.brothers-alchemy.exhaustion_extract":"Exhaustion in a Bottle",
   "item.brothers-alchemy.teacup":"Teacup",
+
+
+  "item.brothers-alchemy.regenerate_limbs":"Regenerate Limbs",
+  "item.brothers-alchemy.freeze":"Freeze",
+  "item.brothers-alchemy.fire_trick":"Fire Trick",
+  "item.brothers-alchemy.bolt_of_ice":"Bolt of Ice",
+  "item.brothers-alchemy.gills":"Gills",
+  "item.brothers-alchemy.flesh_shield":"Flesh Shield",
+  "item.brothers-alchemy.biomecraft":"Biomecraft",
+  "item.brothers-alchemy.drop_out":"Drop Out",
 
   "item.brothers-alchemy.spray_bottle.uses": "Uses left:"
   
