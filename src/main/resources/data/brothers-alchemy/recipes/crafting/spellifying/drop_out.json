@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "lvl_zero",
+  "key": {
+    "#": {
+      "item": "brothers-alchemy:earth_extract"
+    },
+    "%": {
+      "item": "brothers-alchemy:void_extract"
+    },
+    "$": {
+      "item": "minecraft:glass_bottle"
+    }
+  },
+  "pattern": [
+    "#  ",
+    " $ ",
+    "  %"
+  ],
+  "result": {
+    "count": 1,
+    "item": "brothers-alchemy:drop_out"
+  },
+  "show_notification": true
+}

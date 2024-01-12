@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "lvl_zero",
+  "key": {
+    "#": {
+      "item": "brothers-alchemy:fire_extract"
+    },
+    "$": {
+      "item": "minecraft:glass_bottle"
+    }
+  },
+  "pattern": [
+    "#  ",
+    " $ ",
+    "  #"
+  ],
+  "result": {
+    "count": 1,
+    "item": "brothers-alchemy:fire_trick"
+  },
+  "show_notification": true
+}

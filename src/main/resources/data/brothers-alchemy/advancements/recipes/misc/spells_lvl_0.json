@@ -1,0 +1,205 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "apple_extract": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "brothers-alchemy:apple_extract"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "beet_extract": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "brothers-alchemy:beet_extract"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "carrot_extract": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "brothers-alchemy:carrot_extract"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "chorus_extract": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "brothers-alchemy:chorus_extract"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "cocoa_extract": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "brothers-alchemy:cocoa_extract"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "glow_berry_extract": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "brothers-alchemy:glow_berry_extract"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "melon_extract": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "brothers-alchemy:melon_extract"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "mushroom_extract": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "brothers-alchemy:mushroom_extract"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "potato_extract": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "brothers-alchemy:potato_extract"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "pumpkin_extract": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "brothers-alchemy:pumpkin_extract"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "seaweed_extract": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "brothers-alchemy:seaweed_extract"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "sugar_extract": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "brothers-alchemy:sugar_extract"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "sweet_berry_extract": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "brothers-alchemy:sweet_berry_extract"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "wheat_extract": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "brothers-alchemy:wheat_extract"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "apple_extract",
+      "beet_extract",
+      "carrot_extract",
+      "chorus_extract",
+      "cocoa_extract",
+      "glow_berry_extract",
+      "melon_extract",
+      "mushroom_extract",
+      "potato_extract",
+      "pumpkin_extract",
+      "seaweed_extract",
+      "sugar_extract",
+      "sweet_berry_extract",
+      "wheat_extract"
+      
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "brothers-alchemy:crafting/spellifying/biomecraft",
+      "brothers-alchemy:crafting/spellifying/bolt_of_ice",
+      "brothers-alchemy:crafting/spellifying/drop_out",
+      "brothers-alchemy:crafting/spellifying/fire_trick",
+      "brothers-alchemy:crafting/spellifying/flesh_shield",
+      "brothers-alchemy:crafting/spellifying/freeze",
+      "brothers-alchemy:crafting/spellifying/gills",
+      "brothers-alchemy:crafting/spellifying/regenerate_limbs"
+    ]
+  },
+  "sends_telemetry_event": false
+}
