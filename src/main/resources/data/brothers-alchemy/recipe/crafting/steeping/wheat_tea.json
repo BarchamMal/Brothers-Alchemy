@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "tea",
+  "ingredients": [
+    {
+      "item": "brothers-alchemy:teacup"
+    },
+    {
+      "item": "brothers-alchemy:wheat_pulp"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "brothers-alchemy:wheat_tea"
+  }
+}

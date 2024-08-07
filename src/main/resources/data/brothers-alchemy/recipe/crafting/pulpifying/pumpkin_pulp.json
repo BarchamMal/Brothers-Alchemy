@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "pulp",
+  "ingredients": [
+    {
+      "item": "minecraft:pumpkin"
+    },
+    {
+      "item": "brothers-alchemy:diamond_pulpifier"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "brothers-alchemy:pumpkin_pulp"
+  }
+}

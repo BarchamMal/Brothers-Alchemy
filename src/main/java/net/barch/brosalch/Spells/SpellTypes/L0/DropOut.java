@@ -33,11 +33,11 @@ public class DropOut extends Spell {
         ParticleFX.fireEffect(world, user);
         ParticleFX.lightEffect(world, user);
         ParticleFX.dazeEffect(world, user);
-        user.getWorld().playSound(user, user.getBlockPos(), SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.PLAYERS, 1, 1);
+        user.getWorld().playSound(user, user.getBlockPos(), SoundEvents.ENTITY_DRAGON_FIREBALL_EXPLODE, SoundCategory.PLAYERS, 1, 1);
 
         if (getMiningLevel(world.getBlockState(user.getBlockPos().down())) == "wood" && getMiningLevel(world.getBlockState(user.getBlockPos().down().down())) == "wood") {
-            world.setBlockState(user.getBlockPos().down(), Blocks.AIR.getDefaultState());
-            world.setBlockState(user.getBlockPos().down(2), Blocks.AIR.getDefaultState());
+            world.breakBlock(user.getBlockPos().down(), true);
+            world.breakBlock(user.getBlockPos().down(2), true);
         }
 
         return simpleDamage(user, hand, itemStack);

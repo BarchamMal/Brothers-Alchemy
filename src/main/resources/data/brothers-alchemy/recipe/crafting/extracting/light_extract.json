@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "element",
+  "ingredients": [
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "tag": "brothers-alchemy:light_extract"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "brothers-alchemy:light_extract"
+  }
+}

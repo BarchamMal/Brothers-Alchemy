@@ -1,12 +1,11 @@
 package net.barch.brosalch.MagicIngredients;
 
-import net.barch.brosalch.Glue.ItemGroupItem;
+import net.barch.barch_lib.Items.ItemGroupItem;
 import net.barch.brosalch.Miscellaneous.Miscellaneous;
 import net.barch.brosalch.TeaItem;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.item.FoodComponent;
+import net.minecraft.component.type.FoodComponent;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.item.Items;
@@ -27,12 +26,12 @@ public class SweetBerryIngredients {
     public static final StatusEffectInstance SWEET_BERRY_TEA_EFFECT = new StatusEffectInstance(StatusEffects.HASTE, Miscellaneous.TEA_TIME, Miscellaneous.TEA_STRENGTH);
     public static final StatusEffectInstance SWEET_BERRY_COOKIE_EFFECT = new StatusEffectInstance(StatusEffects.HASTE, Miscellaneous.COOKIE_TIME, Miscellaneous.COOKIE_STRENGTH);
 
-    public static final FoodComponent SWEET_BERRY_COOKIE_FOOD = new FoodComponent.Builder().alwaysEdible().hunger(3).saturationModifier(2).snack().statusEffect(SWEET_BERRY_COOKIE_EFFECT, 1).build();
+    public static final FoodComponent SWEET_BERRY_COOKIE_FOOD = new FoodComponent.Builder().alwaysEdible().nutrition(3).saturationModifier(2).snack().statusEffect(SWEET_BERRY_COOKIE_EFFECT, 1).build();
 
-    public static final Item SWEET_BERRY_PULP = new Item(new FabricItemSettings());
-    public static final Item SWEET_BERRY_COOKIE = new Item(new FabricItemSettings().food(SWEET_BERRY_COOKIE_FOOD));
-    public static final TeaItem SWEET_BERRY_TEA = new TeaItem(new FabricItemSettings(), SWEET_BERRY_TEA_EFFECT);
-    public static final Item SWEET_BERRY_EXTRACT = new Item(new FabricItemSettings().recipeRemainder(Items.GLASS_BOTTLE));
+    public static final Item SWEET_BERRY_PULP = new Item(new Item.Settings());
+    public static final Item SWEET_BERRY_COOKIE = new Item(new Item.Settings().food(SWEET_BERRY_COOKIE_FOOD));
+    public static final TeaItem SWEET_BERRY_TEA = new TeaItem(new Item.Settings(), SWEET_BERRY_TEA_EFFECT);
+    public static final Item SWEET_BERRY_EXTRACT = new Item(new Item.Settings().recipeRemainder(Items.GLASS_BOTTLE));
 
 
     public static void RegisterAll() {
@@ -42,10 +41,10 @@ public class SweetBerryIngredients {
 
     public static void RegisterItems() {
 
-        Registry.register(Registries.ITEM, new Identifier(NAMESPACE, "sweet_berry_pulp"), SWEET_BERRY_PULP);
-        Registry.register(Registries.ITEM, new Identifier(NAMESPACE, "sweet_berry_cookie"), SWEET_BERRY_COOKIE);
-        Registry.register(Registries.ITEM, new Identifier(NAMESPACE, "sweet_berry_tea"), SWEET_BERRY_TEA);
-        Registry.register(Registries.ITEM, new Identifier(NAMESPACE, "sweet_berry_extract"), SWEET_BERRY_EXTRACT);
+        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "sweet_berry_pulp"), SWEET_BERRY_PULP);
+        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "sweet_berry_cookie"), SWEET_BERRY_COOKIE);
+        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "sweet_berry_tea"), SWEET_BERRY_TEA);
+        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "sweet_berry_extract"), SWEET_BERRY_EXTRACT);
 
     }
 

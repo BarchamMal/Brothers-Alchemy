@@ -56,7 +56,7 @@ public class BoltOfIceEntity extends ThrownItemEntity {
     }
 
     @Override
-    protected float getGravity() {
+    protected double getGravity() {
         return 0;
     }
 
