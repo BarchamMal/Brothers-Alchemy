@@ -1,7 +1,8 @@
 package net.barch.brosalch;
 
-import net.barch.brosalch.Glue.ItemGrouper;
+import net.barch.barch_lib.Items.ItemGrouper;
 import net.barch.brosalch.MagicIngredients.MagicIngredients;
+import net.barch.brosalch.Miscellaneous.AlchemyComponents;
 import net.barch.brosalch.Miscellaneous.Miscellaneous;
 import net.barch.brosalch.Spells.Spells;
 import net.fabricmc.api.ModInitializer;
@@ -29,11 +30,12 @@ public class BrothersAlchemy implements ModInitializer {
 
 	public static final String NAMESPACE = "brothers-alchemy";
 
-	public static final RegistryKey<ItemGroup> BROTHERS_ALCHEMY_GROUP = RegistryKey.of(RegistryKeys.ITEM_GROUP, new Identifier(NAMESPACE, "brothers_alchemy"));
-	public static final RegistryKey<ItemGroup> SPELLS_GROUP = RegistryKey.of(RegistryKeys.ITEM_GROUP, new Identifier(NAMESPACE, "spells"));
+	public static final RegistryKey<ItemGroup> BROTHERS_ALCHEMY_GROUP = RegistryKey.of(RegistryKeys.ITEM_GROUP, Identifier.of(NAMESPACE, "brothers_alchemy"));
+	public static final RegistryKey<ItemGroup> SPELLS_GROUP = RegistryKey.of(RegistryKeys.ITEM_GROUP, Identifier.of(NAMESPACE, "spells"));
 
 
 	public static final ItemGrouper BAItemGrouper = new ItemGrouper(BROTHERS_ALCHEMY_GROUP);
+
 
 	@Override
 	public void onInitialize() {
@@ -56,6 +58,8 @@ public class BrothersAlchemy implements ModInitializer {
 		MagicIngredients.RegisterAll();
 		Miscellaneous.RegisterAll();
 		Spells.RegisterAll();
+
+		AlchemyComponents.initialize();
 
 	}
 }

@@ -1,21 +1,20 @@
 package net.barch.brosalch.Spells;
 
-import net.minecraft.client.item.TooltipContext;
+import net.barch.brosalch.Miscellaneous.AlchemyComponents;
+import net.minecraft.component.ComponentMap;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.item.Items;
-import net.minecraft.nbt.NbtCompound;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.registry.Registries;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.*;
-import net.minecraft.util.crash.CrashException;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -26,145 +25,119 @@ public class SprayBottleItem extends Item {
         super(settings);
     }
 
-    private NbtCompound nbtCompound;
-
     @Override
-    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        nbtCompound = stack.getOrCreateNbt();
+    public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
 
-        if (readNbt(nbtCompound).getItem() != Items.AIR) {
-            ItemStack spell = readNbt(nbtCompound);
-            tooltip.add(Text.translatable(spell.getTranslationKey()).formatted(Formatting.BLUE));
-            tooltip.add(Text.translatable("item.brothers-alchemy.spray_bottle.uses").append(" " + (spell.getMaxDamage() - spell.getDamage())).formatted(Formatting.GREEN));
+        ComponentMap components = stack.getComponents();
+
+        if (!components.contains(AlchemyComponents.SPELL_COMPONENT_TYPE)) {
+            stack.set(AlchemyComponents.SPELL_COMPONENT_TYPE, new AlchemyComponents.SpellComponent("minecraft:air", 0));
+            return;
         }
+        if (components.get(AlchemyComponents.SPELL_COMPONENT_TYPE).spellItemId().contentEquals("minecraft:air")) return;
+        LOGGER.info(components.get(AlchemyComponents.SPELL_COMPONENT_TYPE).spellItemId());
+
+        ItemStack spell = Registries.ITEM.get(Identifier.tryParse(stack.get(AlchemyComponents.SPELL_COMPONENT_TYPE).spellItemId())).getDefaultStack();
+        spell.setDamage(stack.get(AlchemyComponents.SPELL_COMPONENT_TYPE).damage());
+
+        tooltip.add(Text.translatable(spell.getTranslationKey()).formatted(Formatting.BLUE));
+        tooltip.add(Text.translatable("item.brothers-alchemy.spray_bottle.uses").append(" " + (spell.getMaxDamage() - spell.getDamage())).formatted(Formatting.GREEN));
+
     }
 
-    @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+
         ItemStack mainStack = user.getMainHandStack();
         ItemStack handStack = user.getStackInHand(hand);
         ItemStack offStack = user.getOffHandStack();
 
-        nbtCompound = handStack.getOrCreateNbt();
+        ComponentMap components = handStack.getComponents();
 
-        if (readNbt(handStack.getNbt()).getItem() == Items.AIR) {
+        // if there is no spell_component_type, (possible via commands) add one
+        if (!components.contains(AlchemyComponents.SPELL_COMPONENT_TYPE)) {
+            handStack.set(AlchemyComponents.SPELL_COMPONENT_TYPE, new AlchemyComponents.SpellComponent("minecraft:air", 0));
+            components = handStack.getComponents();
+        }
 
-            // The player must have the spray bottle in their mainhand in order to set the spell.
-            if (mainStack != handStack) {
+        // if there is a spell_component_type, but it's just air, then we try to fill it up with a stack in their offHand if there is one.
+        if (Registries.ITEM.get(Identifier.tryParse(handStack.getComponents().get(AlchemyComponents.SPELL_COMPONENT_TYPE).spellItemId())) == Items.AIR) {
+            if (mainStack!=handStack) {
                 return TypedActionResult.fail(handStack);
             }
-
-            // The player must have a spell in their offhand in order to set the spell.
             if (!(offStack.getItem() instanceof SpellExtractItem)) {
                 return TypedActionResult.fail(handStack);
             }
 
-            writeNbt(offStack, nbtCompound);
-            handStack.setNbt(nbtCompound);
-
+            handStack.set(AlchemyComponents.SPELL_COMPONENT_TYPE, new AlchemyComponents.SpellComponent(Registries.ITEM.getId(offStack.getItem()).toString(), offStack.getDamage()));
             offStack.decrement(1);
+            return TypedActionResult.success(handStack);
+        }
+
+        // if we've gotten to here, it means that we are dealing with a full spray bottle.
+        ItemStack spellStack = Registries.ITEM.get(Identifier.tryParse(components.get(AlchemyComponents.SPELL_COMPONENT_TYPE).spellItemId())).getDefaultStack();
+        spellStack.setDamage(components.get(AlchemyComponents.SPELL_COMPONENT_TYPE).damage());
+
+
+        // if they're sneaking then we pull out the spray bottle
+        if (user.isSneaking()) {
+
+            if (!user.getInventory().insertStack(spellStack)) {
+                user.dropStack(spellStack);
+            }
+            world.playSound(user, user.getBlockPos(), SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.PLAYERS, 1, 1);
+            handStack.set(AlchemyComponents.SPELL_COMPONENT_TYPE, new AlchemyComponents.SpellComponent("minecraft:air", 0));
 
             return TypedActionResult.success(handStack);
 
         }
 
-        ItemStack spellStack = readNbt(nbtCompound);
-
-        // The player can take the spell out of the spell bottle by shift-right clicking.
-        if (user.isSneaking() && readNbt(handStack.getNbt()) != null) {
-
-            if (!user.getInventory().insertStack(spellStack)) {
-                user.dropItem(spellStack, false);
-            }
-            world.playSound(user, user.getBlockPos(), SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.PLAYERS, 1, 1);
-
-            clearSpellNbt(nbtCompound);
-
-            return TypedActionResult.success(handStack, true);
-
-        }
-
         ((SpellExtractItem)spellStack.getItem()).use(world, user, hand, spellStack);
-
-        writeNbt(spellStack, nbtCompound);
-
+        handStack.set(AlchemyComponents.SPELL_COMPONENT_TYPE, new AlchemyComponents.SpellComponent(Registries.ITEM.getId(spellStack.getItem()).toString(), spellStack.getDamage()));
         return TypedActionResult.success(handStack);
+
     }
 
     @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
 
-        ItemStack handStack = context.getStack();
+        ItemStack stack = context.getStack();
 
-        nbtCompound = handStack.getOrCreateNbt();
+        ComponentMap components = stack.getComponents();
 
-        if (readNbt(handStack.getNbt()).getItem() == Items.AIR || context.getPlayer().isSneaking()) {
+        if (!components.contains(AlchemyComponents.SPELL_COMPONENT_TYPE)) {
+            stack.set(AlchemyComponents.SPELL_COMPONENT_TYPE, new AlchemyComponents.SpellComponent("minecraft:air", 0));
             return ActionResult.FAIL;
         }
+        if (components.get(AlchemyComponents.SPELL_COMPONENT_TYPE).spellItemId().contentEquals("minecraft:air") || context.getPlayer().isSneaking()) return ActionResult.FAIL;
 
-        ItemStack spellStack = readNbt(nbtCompound);
+        ItemStack spellStack = Registries.ITEM.get(Identifier.tryParse(components.get(AlchemyComponents.SPELL_COMPONENT_TYPE).spellItemId())).getDefaultStack();
+        spellStack.setDamage(components.get(AlchemyComponents.SPELL_COMPONENT_TYPE).damage());
 
         ((SpellExtractItem)spellStack.getItem()).useOnBlock(context, spellStack);
 
-        writeNbt(spellStack, nbtCompound);
-
-        return ActionResult.PASS;
+        stack.set(AlchemyComponents.SPELL_COMPONENT_TYPE, new AlchemyComponents.SpellComponent(Registries.ITEM.getId(spellStack.getItem()).toString(), spellStack.getDamage()));
+        return ActionResult.SUCCESS;
 
     }
 
     @Override
     public ActionResult useOnEntity(ItemStack stack, PlayerEntity user, LivingEntity entity, Hand hand) {
 
-        nbtCompound = stack.getOrCreateNbt();
+        ComponentMap components = stack.getComponents();
 
-        if (readNbt(stack.getNbt()).getItem() == Items.AIR) {
-
+        if (!components.contains(AlchemyComponents.SPELL_COMPONENT_TYPE)) {
+            stack.set(AlchemyComponents.SPELL_COMPONENT_TYPE, new AlchemyComponents.SpellComponent("minecraft:air", 0));
             return ActionResult.FAIL;
-
         }
+        if (components.get(AlchemyComponents.SPELL_COMPONENT_TYPE).spellItemId().contentEquals("minecraft:air") || user.isSneaking()) return ActionResult.FAIL;
 
-        ItemStack spellStack = readNbt(nbtCompound);
+        ItemStack spellStack = Registries.ITEM.get(Identifier.tryParse(components.get(AlchemyComponents.SPELL_COMPONENT_TYPE).spellItemId())).getDefaultStack();
+        spellStack.setDamage(components.get(AlchemyComponents.SPELL_COMPONENT_TYPE).damage());
 
         spellStack.getItem().useOnEntity(spellStack, user, entity, hand);
 
-        writeNbt(spellStack, nbtCompound);
-
+        stack.set(AlchemyComponents.SPELL_COMPONENT_TYPE, new AlchemyComponents.SpellComponent(Registries.ITEM.getId(spellStack.getItem()).toString(), spellStack.getDamage()));
         return ActionResult.SUCCESS;
-    }
-
-    private void writeNbt(ItemStack itemStack, NbtCompound nbt) {
-        // Make sure the player has something in their offhand before setting the spell to it.
-        if (itemStack.getItem() != Items.AIR && itemStack != null) {
-            NbtCompound nbt1 = new NbtCompound();
-            nbt1.putInt("Damage", itemStack.getDamage());
-            nbt1.putString("Type", Registries.ITEM.getId(itemStack.getItem()).toString());
-
-            nbt.put("Spell", nbt1);
-            return;
-        }
-
-        clearSpellNbt(nbt);
-    }
-
-    private void clearSpellNbt(NbtCompound nbt) {
-        nbt.remove("Spell");
-    }
-
-    public ItemStack readNbt(NbtCompound nbt) {
-
-        try {
-            NbtCompound nbt1 = nbt.getCompound("Spell");
-
-            ItemStack itemStack = Registries.ITEM.get(Identifier.tryParse(nbt1.getString("Type"))).getDefaultStack();
-
-            itemStack.setDamage(nbt1.getInt("Damage"));
-
-            return itemStack;
-        }
-        catch (CrashException var3) {
-            LOGGER.info("Caught a crash at SprayBottleItem", var3);
-            return null;
-        }
 
     }
 

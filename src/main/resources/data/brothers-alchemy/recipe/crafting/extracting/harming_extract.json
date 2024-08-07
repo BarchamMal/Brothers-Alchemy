@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "element",
+  "ingredients": [
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "item": "brothers-alchemy:healing_extract"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "brothers-alchemy:harming_extract"
+  }
+}

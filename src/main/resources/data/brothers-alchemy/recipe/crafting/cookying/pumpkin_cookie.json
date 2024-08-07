@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "cookies",
+  "key": {
+    "#": {
+      "item": "minecraft:wheat"
+    },
+    "X": {
+      "item": "brothers-alchemy:pumpkin_pulp"
+    }
+  },
+  "pattern": [
+    "#X#"
+  ],
+  "result": {
+    "count": 4,
+    "id": "brothers-alchemy:pumpkin_cookie"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "lvl_zero",
+  "key": {
+    "#": {
+      "item": "brothers-alchemy:cold_extract"
+    },
+    "%": {
+      "item": "brothers-alchemy:curse_extract"
+    },
+    "$": {
+      "item": "minecraft:glass_bottle"
+    }
+  },
+  "pattern": [
+    "#  ",
+    " $ ",
+    "  %"
+  ],
+  "result": {
+    "count": 1,
+    "id": "brothers-alchemy:freeze"
+  },
+  "show_notification": true
+}

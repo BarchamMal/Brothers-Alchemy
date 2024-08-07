@@ -2,8 +2,8 @@ package net.barch.brosalch.Spells;
 
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.minecraft.entity.Entity;
-import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.particle.SimpleParticleType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -14,16 +14,16 @@ import static net.barch.brosalch.BrothersAlchemy.NAMESPACE;
 
 public class ParticleFX {
 
-    public static final DefaultParticleType HEAL = FabricParticleTypes.simple();
-    public static final DefaultParticleType LIGHT = FabricParticleTypes.simple();
-    public static final DefaultParticleType FLESH_SHIELD = FabricParticleTypes.simple();
-    public static final DefaultParticleType TEMPORARY_HP = FabricParticleTypes.simple();
+    public static final SimpleParticleType HEAL = FabricParticleTypes.simple();
+    public static final SimpleParticleType LIGHT = FabricParticleTypes.simple();
+    public static final SimpleParticleType FLESH_SHIELD = FabricParticleTypes.simple();
+    public static final SimpleParticleType TEMPORARY_HP = FabricParticleTypes.simple();
 
     public static void onInitialize() {
-        Registry.register(Registries.PARTICLE_TYPE, new Identifier(NAMESPACE, "heal"), HEAL);
-        Registry.register(Registries.PARTICLE_TYPE, new Identifier(NAMESPACE, "light"), LIGHT);
-        Registry.register(Registries.PARTICLE_TYPE, new Identifier(NAMESPACE, "flesh_shield"), FLESH_SHIELD);
-        Registry.register(Registries.PARTICLE_TYPE, new Identifier(NAMESPACE, "temp_hp"), TEMPORARY_HP);
+        Registry.register(Registries.PARTICLE_TYPE, Identifier.of(NAMESPACE, "heal"), HEAL);
+        Registry.register(Registries.PARTICLE_TYPE, Identifier.of(NAMESPACE, "light"), LIGHT);
+        Registry.register(Registries.PARTICLE_TYPE, Identifier.of(NAMESPACE, "flesh_shield"), FLESH_SHIELD);
+        Registry.register(Registries.PARTICLE_TYPE, Identifier.of(NAMESPACE, "temp_hp"), TEMPORARY_HP);
     }
 
     public static void healEffect(World world, Entity entity) {
