@@ -6,8 +6,13 @@ import net.barch.brosalch.Spells.UnusedItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.particle.ItemStackParticleEffect;
+import net.minecraft.particle.ParticleEffect;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.hit.EntityHitResult;
@@ -15,6 +20,7 @@ import net.minecraft.util.hit.HitResult;
 import net.minecraft.world.World;
 
 public class BoltOfIceEntity extends ThrownItemEntity {
+
     public BoltOfIceEntity(EntityType<? extends ThrownItemEntity> entityType, World world) {
         super(entityType, world);
     }
@@ -24,6 +30,26 @@ public class BoltOfIceEntity extends ThrownItemEntity {
 
     public BoltOfIceEntity(World world, double x, double y, double z) {
         super(Spells.BOLT_OF_ICE_ENTITY_TYPE, x, y, z, world);
+    }
+
+    private ParticleEffect getParticleParameters() {
+        return ParticleTypes.SNOWFLAKE;
+    }
+
+    @Override
+    public ItemStack getStack() {
+        return this.getDefaultItem().getDefaultStack();
+    }
+
+    public void handleStatus(byte status) {
+        if (status == 3) {
+            ParticleEffect particleEffect = this.getParticleParameters();
+
+            for(int i = 0; i < 8; ++i) {
+                this.getWorld().addParticle(particleEffect, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
+            }
+        }
+
     }
 
     @Override
@@ -39,7 +65,8 @@ public class BoltOfIceEntity extends ThrownItemEntity {
         }
 
         ParticleFX.coldEffect(entityHitResult.getEntity().getWorld(), entityHitResult.getEntity());
-        entity.damage(this.getDamageSources().freeze(), 4);
+        entity.damage(this.getOwner().getDamageSources().playerAttack((PlayerEntity)this.getOwner()), 4);
+        entity.damage(this.getOwner().getDamageSources().freeze(), 1);
         this.getWorld().playSound(this, this.getBlockPos(), SoundEvents.BLOCK_SNOW_BREAK, SoundCategory.NEUTRAL, 1, 1);
 
         this.kill();
