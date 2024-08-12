@@ -80,7 +80,7 @@ This mod is licensed under the MIT License. See the [LICENSE](LICENSE) file for 
 
 ### No Reuploading
 
-- No reuploading, no claiming this as yours, no paywalling this mod's content in a server, etc.
+- Please do not reupload this mod, do not claim this as yours, don't paywall this mod's content in a server, etc. Thank you.
 
 ## Credits
 - Art: BarchamMal, Vectorwing
