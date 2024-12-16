@@ -15,6 +15,7 @@ import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 
 import static net.barch.brosalch.Miscellaneous.Miscellaneous.TEACUP;
+import static net.barch.brosalch.BrothersAlchemy.LOGGER;
 
 public class TeaItem extends Item {
     private static final int MAX_USE_TIME = 32;
@@ -50,7 +51,8 @@ public class TeaItem extends Item {
         return stack;
     }
 
-    public int getMaxUseTime(ItemStack stack) {
+    @Override
+    public int getMaxUseTime(ItemStack stack, LivingEntity user) {
         return MAX_USE_TIME;
     }
 
