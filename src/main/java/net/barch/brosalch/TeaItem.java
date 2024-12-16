@@ -15,7 +15,6 @@ import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 
 import static net.barch.brosalch.Miscellaneous.Miscellaneous.TEACUP;
-import static net.barch.brosalch.BrothersAlchemy.LOGGER;
 
 public class TeaItem extends Item {
     private static final int MAX_USE_TIME = 32;
