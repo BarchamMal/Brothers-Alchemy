@@ -13,12 +13,13 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-import static net.barch.brosalch.BrothersAlchemy.BAItemGrouper;
-import static net.barch.brosalch.BrothersAlchemy.NAMESPACE;
+import static net.barch.brosalch.BrothersAlchemy.*;
+import static net.barch.brosalch.BrothersAlchemy.createItem;
 import static net.barch.brosalch.MagicIngredients.PotatoIngredients.POTATO_PULP;
 import static net.barch.brosalch.MagicIngredients.PotatoIngredients.POTATO_COOKIE;
 import static net.barch.brosalch.MagicIngredients.PotatoIngredients.POTATO_TEA;
 import static net.barch.brosalch.MagicIngredients.PotatoIngredients.POTATO_EXTRACT;
+import static net.barch.brosalch.Miscellaneous.Miscellaneous.getCookieFood;
 
 public class BeetIngredients {
 
@@ -26,27 +27,18 @@ public class BeetIngredients {
     public static final StatusEffectInstance BEET_TEA_EFFECT = new StatusEffectInstance(StatusEffects.REGENERATION, Miscellaneous.TEA_TIME, Miscellaneous.TEA_STRENGTH);
     public static final StatusEffectInstance BEET_COOKIE_EFFECT = new StatusEffectInstance(StatusEffects.REGENERATION, Miscellaneous.COOKIE_TIME, Miscellaneous.COOKIE_STRENGTH);
 
-    public static final FoodComponent BEET_COOKIE_FOOD = new FoodComponent.Builder().alwaysEdible().nutrition(3).saturationModifier(2).snack().statusEffect(BEET_COOKIE_EFFECT, 1).build();
+    public static final FoodComponent BEET_COOKIE_FOOD = new FoodComponent.Builder().alwaysEdible().nutrition(3).saturationModifier(2).build();
 
-    public static final Item BEET_PULP = new Item(new Item.Settings());
-    public static final Item BEET_COOKIE = new Item(new Item.Settings().food(BEET_COOKIE_FOOD));
-    public static final TeaItem BEET_TEA = new TeaItem(new Item.Settings(), BEET_TEA_EFFECT);
-    public static final Item BEET_EXTRACT = new Item(new Item.Settings().recipeRemainder(Items.GLASS_BOTTLE));
+    public static final Item BEET_PULP = createItem("beet_pulp", Item.class, new Item.Settings());
+    public static final Item BEET_COOKIE = createItem("beet_cookie", new Item.Settings(), BEET_COOKIE_FOOD, getCookieFood(BEET_COOKIE_EFFECT));
+    public static final TeaItem BEET_TEA = createItem("beet_tea", new Item.Settings(), BEET_TEA_EFFECT);
+    public static final Item BEET_EXTRACT = createItem("beet_extract", Item.class, new Item.Settings().recipeRemainder(Items.GLASS_BOTTLE));
 
 
     public static void RegisterAll() {
-        RegisterItems();
         GroupItems();
     }
 
-    public static void RegisterItems() {
-
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "beet_pulp"), BEET_PULP);
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "beet_cookie"), BEET_COOKIE);
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "beet_tea"), BEET_TEA);
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "beet_extract"), BEET_EXTRACT);
-
-    }
 
     public static void GroupItems() {
 

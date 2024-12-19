@@ -1,21 +1,17 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "misc",
-  "group": "cookies",
-  "key": {
-    "#": {
-      "item": "minecraft:wheat"
+    "type": "minecraft:crafting_shaped",
+    "category": "misc",
+    "group": "cookies",
+    "key": {
+        "#": "minecraft:wheat",
+        "X": "brothers-alchemy:apple_pulp"
     },
-    "X": {
-      "item": "brothers-alchemy:apple_pulp"
-    }
-  },
-  "pattern": [
-    "#X#"
-  ],
-  "result": {
-    "count": 4,
-    "id": "brothers-alchemy:apple_cookie"
-  },
-  "show_notification": true
+    "pattern": [
+        "#X#"
+    ],
+    "result": {
+        "count": 4,
+        "id": "brothers-alchemy:apple_cookie"
+    },
+    "show_notification": true
 }

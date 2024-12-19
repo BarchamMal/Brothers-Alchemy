@@ -1,17 +1,13 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "group": "pulp",
-  "ingredients": [
-    {
-      "item": "minecraft:beetroot"
-    },
-    {
-      "item": "brothers-alchemy:diamond_pulpifier"
+    "type": "minecraft:crafting_shapeless",
+    "category": "misc",
+    "group": "pulp",
+    "ingredients": [
+        "minecraft:beetroot",
+        "brothers-alchemy:diamond_pulpifier"
+    ],
+    "result": {
+        "count": 1,
+        "id": "brothers-alchemy:beet_pulp"
     }
-  ],
-  "result": {
-    "count": 1,
-    "id": "brothers-alchemy:beet_pulp"
-  }
 }

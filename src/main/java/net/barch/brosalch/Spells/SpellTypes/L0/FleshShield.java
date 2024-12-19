@@ -10,7 +10,6 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
@@ -38,7 +37,7 @@ public class FleshShield extends Spell {
     }
 
     @Override
-    public TypedActionResult<ItemStack> useAir(World world, PlayerEntity user, Hand hand, @Nullable ItemStack itemStack) {
+    public ActionResult useAir(World world, PlayerEntity user, Hand hand, @Nullable ItemStack itemStack) {
         StatusEffectInstance statusEffect = new StatusEffectInstance(StatusEffects.ABSORPTION, SPELL_LVL_0, 0);
         user.addStatusEffect(statusEffect, user);
         statusEffect = new StatusEffectInstance(StatusEffects.SLOWNESS, SPELL_LVL_0, 0);

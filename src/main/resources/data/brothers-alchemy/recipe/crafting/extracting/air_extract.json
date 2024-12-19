@@ -1,17 +1,13 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "group": "element",
-  "ingredients": [
-    {
-      "item": "minecraft:glass_bottle"
-    },
-    {
-      "tag": "brothers-alchemy:air_extract"
+    "type": "minecraft:crafting_shapeless",
+    "category": "misc",
+    "group": "element",
+    "ingredients": [
+        "minecraft:glass_bottle",
+        "#brothers-alchemy:air_extract"
+    ],
+    "result": {
+        "count": 1,
+        "id": "brothers-alchemy:air_extract"
     }
-  ],
-  "result": {
-    "count": 1,
-    "id": "brothers-alchemy:air_extract"
-  }
 }

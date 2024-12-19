@@ -16,9 +16,9 @@ public abstract class ItemMixin {
     @Shadow public abstract ItemStack getDefaultStack();
 
     @Inject(at = @At("TAIL"), method = "getRecipeRemainder", cancellable = true)
-    private void init(CallbackInfoReturnable<Item> cir) {
+    private void init(CallbackInfoReturnable<ItemStack> cir) {
         if (this.getDefaultStack().isIn(Tags.CRAFTING_TOOLS)) {
-            cir.setReturnValue(this.getDefaultStack().getItem());
+            cir.setReturnValue(this.getDefaultStack());
         }
     }
 }

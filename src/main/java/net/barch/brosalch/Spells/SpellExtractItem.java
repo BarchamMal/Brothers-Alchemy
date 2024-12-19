@@ -10,7 +10,6 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
 import static net.barch.brosalch.BrothersAlchemy.LOGGER;
@@ -47,13 +46,13 @@ public class SpellExtractItem extends Item {
 
     @Override
     public ActionResult useOnEntity(ItemStack stack, PlayerEntity user, LivingEntity entity, Hand hand) {
-        if (!user.getItemCooldownManager().isCoolingDown(user.getStackInHand(hand).getItem()))
+        if (!user.getItemCooldownManager().isCoolingDown(user.getStackInHand(hand)))
             return this.SPELL.useEntity(stack, user, entity, hand);
         return ActionResult.FAIL;
     }
 
     @Override
-    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+    public ActionResult use(World world, PlayerEntity user, Hand hand) {
         return this.SPELL.useAir(world, user, hand, null);
     }
 
@@ -63,7 +62,7 @@ public class SpellExtractItem extends Item {
         return this.SPELL.useBlock(context, itemStack);
     }
 
-    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand, ItemStack itemStack) {
+    public ActionResult use(World world, PlayerEntity user, Hand hand, ItemStack itemStack) {
         return this.SPELL.useAir(world, user, hand, itemStack);
     }
 }

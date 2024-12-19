@@ -1,17 +1,13 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "group": "tea",
-  "ingredients": [
-    {
-      "item": "brothers-alchemy:teacup"
-    },
-    {
-      "item": "brothers-alchemy:sweet_berry_pulp"
+    "type": "minecraft:crafting_shapeless",
+    "category": "misc",
+    "group": "tea",
+    "ingredients": [
+        "brothers-alchemy:teacup",
+        "brothers-alchemy:sweet_berry_pulp"
+    ],
+    "result": {
+        "count": 1,
+        "id": "brothers-alchemy:sweet_berry_tea"
     }
-  ],
-  "result": {
-    "count": 1,
-    "id": "brothers-alchemy:sweet_berry_tea"
-  }
 }

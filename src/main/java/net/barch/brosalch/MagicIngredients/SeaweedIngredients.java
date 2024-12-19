@@ -13,12 +13,13 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-import static net.barch.brosalch.BrothersAlchemy.BAItemGrouper;
-import static net.barch.brosalch.BrothersAlchemy.NAMESPACE;
+import static net.barch.brosalch.BrothersAlchemy.*;
+import static net.barch.brosalch.BrothersAlchemy.createItem;
 import static net.barch.brosalch.MagicIngredients.SugarIngredients.SUGAR_PULP;
 import static net.barch.brosalch.MagicIngredients.SugarIngredients.SUGAR_COOKIE;
 import static net.barch.brosalch.MagicIngredients.SugarIngredients.SUGAR_TEA;
 import static net.barch.brosalch.MagicIngredients.SugarIngredients.SUGAR_EXTRACT;
+import static net.barch.brosalch.Miscellaneous.Miscellaneous.getCookieFood;
 
 public class SeaweedIngredients {
 
@@ -26,27 +27,18 @@ public class SeaweedIngredients {
     public static final StatusEffectInstance SEAWEED_TEA_EFFECT = new StatusEffectInstance(StatusEffects.WATER_BREATHING, Miscellaneous.TEA_TIME, Miscellaneous.TEA_STRENGTH);
     public static final StatusEffectInstance SEAWEED_COOKIE_EFFECT = new StatusEffectInstance(StatusEffects.WATER_BREATHING, Miscellaneous.COOKIE_TIME, Miscellaneous.COOKIE_STRENGTH);
 
-    public static final FoodComponent SEAWEED_COOKIE_FOOD = new FoodComponent.Builder().alwaysEdible().nutrition(3).saturationModifier(2).snack().statusEffect(SEAWEED_COOKIE_EFFECT, 1).build();
+    public static final FoodComponent SEAWEED_COOKIE_FOOD = new FoodComponent.Builder().alwaysEdible().nutrition(3).saturationModifier(2).build();
 
-    public static final Item SEAWEED_PULP = new Item(new Item.Settings());
-    public static final Item SEAWEED_COOKIE = new Item(new Item.Settings().food(SEAWEED_COOKIE_FOOD));
-    public static final TeaItem SEAWEED_TEA = new TeaItem(new Item.Settings(), SEAWEED_TEA_EFFECT);
-    public static final Item SEAWEED_EXTRACT = new Item(new Item.Settings().recipeRemainder(Items.GLASS_BOTTLE));
+    public static final Item SEAWEED_PULP = createItem("seaweed_pulp", Item.class, new Item.Settings());
+    public static final Item SEAWEED_COOKIE = createItem("seaweed_cookie", new Item.Settings(), SEAWEED_COOKIE_FOOD, getCookieFood(SEAWEED_COOKIE_EFFECT));
+    public static final TeaItem SEAWEED_TEA = createItem("seaweed_tea", new Item.Settings(), SEAWEED_TEA_EFFECT);
+    public static final Item SEAWEED_EXTRACT = createItem("seaweed_extract", Item.class, new Item.Settings().recipeRemainder(Items.GLASS_BOTTLE));
 
 
     public static void RegisterAll() {
-        RegisterItems();
         GroupItems();
     }
 
-    public static void RegisterItems() {
-
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "seaweed_pulp"), SEAWEED_PULP);
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "seaweed_cookie"), SEAWEED_COOKIE);
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "seaweed_tea"), SEAWEED_TEA);
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "seaweed_extract"), SEAWEED_EXTRACT);
-
-    }
 
     public static void GroupItems() {
 

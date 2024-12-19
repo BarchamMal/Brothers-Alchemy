@@ -1,25 +1,19 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "lvl_zero",
-  "key": {
-    "#": {
-      "item": "brothers-alchemy:water_extract"
+    "type": "minecraft:crafting_shaped",
+    "category": "lvl_zero",
+    "key": {
+        "#": "brothers-alchemy:water_extract",
+        "%": "brothers-alchemy:air_extract",
+        "$": "minecraft:glass_bottle"
     },
-    "%": {
-      "item": "brothers-alchemy:air_extract"
+    "pattern": [
+        "#  ",
+        " $ ",
+        "  %"
+    ],
+    "result": {
+        "count": 1,
+        "id": "brothers-alchemy:gills"
     },
-    "$": {
-      "item": "minecraft:glass_bottle"
-    }
-  },
-  "pattern": [
-    "#  ",
-    " $ ",
-    "  %"
-  ],
-  "result": {
-    "count": 1,
-    "id": "brothers-alchemy:gills"
-  },
-  "show_notification": true
+    "show_notification": true
 }

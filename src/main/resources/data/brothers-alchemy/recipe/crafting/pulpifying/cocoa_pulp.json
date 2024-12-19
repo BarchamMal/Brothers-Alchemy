@@ -1,17 +1,13 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "group": "pulp",
-  "ingredients": [
-    {
-      "item": "minecraft:cocoa_beans"
-    },
-    {
-      "item": "brothers-alchemy:diamond_pulpifier"
+    "type": "minecraft:crafting_shapeless",
+    "category": "misc",
+    "group": "pulp",
+    "ingredients": [
+        "minecraft:cocoa_beans",
+        "brothers-alchemy:diamond_pulpifier"
+    ],
+    "result": {
+        "count": 1,
+        "id": "brothers-alchemy:cocoa_pulp"
     }
-  ],
-  "result": {
-    "count": 1,
-    "id": "brothers-alchemy:cocoa_pulp"
-  }
 }

@@ -9,16 +9,14 @@ import net.minecraft.component.type.FoodComponent;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.item.Items;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.util.Identifier;
 
-import static net.barch.brosalch.BrothersAlchemy.BAItemGrouper;
-import static net.barch.brosalch.BrothersAlchemy.NAMESPACE;
+import static net.barch.brosalch.BrothersAlchemy.*;
+import static net.barch.brosalch.BrothersAlchemy.createItem;
 import static net.barch.brosalch.MagicIngredients.GlowBerryIngredients.GLOW_BERRY_PULP;
 import static net.barch.brosalch.MagicIngredients.GlowBerryIngredients.GLOW_BERRY_COOKIE;
 import static net.barch.brosalch.MagicIngredients.GlowBerryIngredients.GLOW_BERRY_TEA;
 import static net.barch.brosalch.MagicIngredients.GlowBerryIngredients.GLOW_BERRY_EXTRACT;
+import static net.barch.brosalch.Miscellaneous.Miscellaneous.getCookieFood;
 
 public class AppleIngredients {
 
@@ -26,26 +24,16 @@ public class AppleIngredients {
     public static final StatusEffectInstance APPLE_TEA_EFFECT = new StatusEffectInstance(StatusEffects.LUCK, Miscellaneous.TEA_TIME, Miscellaneous.TEA_STRENGTH);
     public static final StatusEffectInstance APPLE_COOKIE_EFFECT = new StatusEffectInstance(StatusEffects.LUCK, Miscellaneous.COOKIE_TIME, Miscellaneous.COOKIE_STRENGTH);
 
-    public static final FoodComponent APPLE_COOKIE_FOOD = new FoodComponent.Builder().alwaysEdible().nutrition(3).saturationModifier(2).snack().statusEffect(APPLE_COOKIE_EFFECT, 1).build();
+    public static final FoodComponent APPLE_COOKIE_FOOD = new FoodComponent.Builder().alwaysEdible().nutrition(3).saturationModifier(2).build();
 
-    public static final Item APPLE_PULP = new Item(new Item.Settings());
-    public static final Item APPLE_COOKIE = new Item(new Item.Settings().food(APPLE_COOKIE_FOOD));
-    public static final TeaItem APPLE_TEA = new TeaItem(new Item.Settings(), APPLE_TEA_EFFECT);
-    public static final Item APPLE_EXTRACT = new Item(new Item.Settings().recipeRemainder(Items.GLASS_BOTTLE));
+    public static final Item APPLE_PULP = createItem("apple_pulp", Item.class, new Item.Settings());
+    public static final Item APPLE_COOKIE = createItem("apple_cookie", new Item.Settings(), APPLE_COOKIE_FOOD, getCookieFood(APPLE_COOKIE_EFFECT));
+    public static final TeaItem APPLE_TEA = createItem("apple_tea", new Item.Settings(), APPLE_TEA_EFFECT);
+    public static final Item APPLE_EXTRACT = createItem("apple_extract", Item.class, new Item.Settings().recipeRemainder(Items.GLASS_BOTTLE));
 
 
     public static void RegisterAll() {
-        RegisterItems();
         GroupItems();
-    }
-
-    public static void RegisterItems() {
-
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "apple_pulp"), APPLE_PULP);
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "apple_cookie"), APPLE_COOKIE);
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "apple_tea"), APPLE_TEA);
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "apple_extract"), APPLE_EXTRACT);
-
     }
 
     public static void GroupItems() {

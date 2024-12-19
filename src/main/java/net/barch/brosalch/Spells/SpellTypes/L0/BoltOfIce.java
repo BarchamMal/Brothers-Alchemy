@@ -7,8 +7,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
@@ -21,7 +21,7 @@ public class BoltOfIce extends Spell {
     }
 
     @Override
-    public TypedActionResult<ItemStack> useAir(World world, PlayerEntity user, Hand hand, @Nullable ItemStack itemStack) {
+    public ActionResult useAir(World world, PlayerEntity user, Hand hand, @Nullable ItemStack itemStack) {
 
         BoltOfIceEntity boltOfIceEntity = new BoltOfIceEntity(world, user);
         boltOfIceEntity.setItem(Items.AIR.getDefaultStack());

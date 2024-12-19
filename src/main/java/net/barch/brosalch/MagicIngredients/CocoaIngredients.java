@@ -13,12 +13,13 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-import static net.barch.brosalch.BrothersAlchemy.BAItemGrouper;
-import static net.barch.brosalch.BrothersAlchemy.NAMESPACE;
+import static net.barch.brosalch.BrothersAlchemy.*;
+import static net.barch.brosalch.BrothersAlchemy.createItem;
 import static net.barch.brosalch.MagicIngredients.PumpkinIngredients.PUMPKIN_PULP;
 import static net.barch.brosalch.MagicIngredients.PumpkinIngredients.PUMPKIN_COOKIE;
 import static net.barch.brosalch.MagicIngredients.PumpkinIngredients.PUMPKIN_TEA;
 import static net.barch.brosalch.MagicIngredients.PumpkinIngredients.PUMPKIN_EXTRACT;
+import static net.barch.brosalch.Miscellaneous.Miscellaneous.getCookieFood;
 
 public class CocoaIngredients {
 
@@ -26,26 +27,16 @@ public class CocoaIngredients {
     public static final StatusEffectInstance COCOA_TEA_EFFECT = new StatusEffectInstance(StatusEffects.STRENGTH, Miscellaneous.TEA_TIME, Miscellaneous.TEA_STRENGTH);
     public static final StatusEffectInstance COCOA_COOKIE_EFFECT = new StatusEffectInstance(StatusEffects.STRENGTH, Miscellaneous.COOKIE_TIME, Miscellaneous.COOKIE_STRENGTH);
 
-    public static final FoodComponent COCOA_COOKIE_FOOD = new FoodComponent.Builder().alwaysEdible().nutrition(3).saturationModifier(2).snack().statusEffect(COCOA_COOKIE_EFFECT, 1).build();
+    public static final FoodComponent COCOA_COOKIE_FOOD = new FoodComponent.Builder().alwaysEdible().nutrition(3).saturationModifier(2).build();
 
-    public static final Item COCOA_PULP = new Item(new Item.Settings());
-    public static final Item COCOA_COOKIE = new Item(new Item.Settings().food(COCOA_COOKIE_FOOD));
-    public static final TeaItem COCOA_TEA = new TeaItem(new Item.Settings(), COCOA_TEA_EFFECT);
-    public static final Item COCOA_EXTRACT = new Item(new Item.Settings().recipeRemainder(Items.GLASS_BOTTLE));
+    public static final Item COCOA_PULP = createItem("cocoa_pulp", Item.class, new Item.Settings());
+    public static final Item COCOA_COOKIE = createItem("cocoa_cookie", new Item.Settings(), COCOA_COOKIE_FOOD, getCookieFood(COCOA_COOKIE_EFFECT));
+    public static final TeaItem COCOA_TEA = createItem("cocoa_tea", new Item.Settings(), COCOA_TEA_EFFECT);
+    public static final Item COCOA_EXTRACT = createItem("cocoa_extract", Item.class, new Item.Settings().recipeRemainder(Items.GLASS_BOTTLE));
 
 
     public static void RegisterAll() {
-        RegisterItems();
         GroupItems();
-    }
-
-    public static void RegisterItems() {
-
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "cocoa_pulp"), COCOA_PULP);
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "cocoa_cookie"), COCOA_COOKIE);
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "cocoa_tea"), COCOA_TEA);
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "cocoa_extract"), COCOA_EXTRACT);
-
     }
 
     public static void GroupItems() {

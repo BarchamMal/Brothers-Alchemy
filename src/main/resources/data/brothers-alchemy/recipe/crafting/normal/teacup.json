@@ -1,18 +1,16 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "misc",
-  "key": {
-    "#": {
-      "item": "minecraft:glass_pane"
-    }
-  },
-  "pattern": [
-    "###",
-    " ##"
-  ],
-  "result": {
-    "count": 12,
-    "id": "brothers-alchemy:teacup"
-  },
-  "show_notification": true
+    "type": "minecraft:crafting_shaped",
+    "category": "misc",
+    "key": {
+        "#": "minecraft:glass_pane"
+    },
+    "pattern": [
+        "###",
+        " ##"
+    ],
+    "result": {
+        "count": 12,
+        "id": "brothers-alchemy:teacup"
+    },
+    "show_notification": true
 }

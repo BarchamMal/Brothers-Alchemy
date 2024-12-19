@@ -1,17 +1,13 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "group": "tea",
-  "ingredients": [
-    {
-      "item": "brothers-alchemy:teacup"
-    },
-    {
-      "item": "brothers-alchemy:carrot_pulp"
+    "type": "minecraft:crafting_shapeless",
+    "category": "misc",
+    "group": "tea",
+    "ingredients": [
+        "brothers-alchemy:teacup",
+        "brothers-alchemy:carrot_pulp"
+    ],
+    "result": {
+        "count": 1,
+        "id": "brothers-alchemy:carrot_tea"
     }
-  ],
-  "result": {
-    "count": 1,
-    "id": "brothers-alchemy:carrot_tea"
-  }
 }

@@ -13,11 +13,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ItemStackParticleEffect;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.world.World;
+import org.apache.logging.log4j.core.jmx.Server;
 
 public class BoltOfIceEntity extends ThrownItemEntity {
 
@@ -25,11 +27,11 @@ public class BoltOfIceEntity extends ThrownItemEntity {
         super(entityType, world);
     }
     public BoltOfIceEntity(World world, LivingEntity owner) {
-        super(Spells.BOLT_OF_ICE_ENTITY_TYPE, owner, world);
+        super(Spells.BOLT_OF_ICE_ENTITY_TYPE, world);
     }
 
-    public BoltOfIceEntity(World world, double x, double y, double z) {
-        super(Spells.BOLT_OF_ICE_ENTITY_TYPE, x, y, z, world);
+    public BoltOfIceEntity(LivingEntity owner, World world, ItemStack stack) {
+        super(Spells.BOLT_OF_ICE_ENTITY_TYPE, owner, world, stack);
     }
 
     private ParticleEffect getParticleParameters() {
@@ -63,22 +65,24 @@ public class BoltOfIceEntity extends ThrownItemEntity {
         if (!(entity instanceof LivingEntity)) {
             return;
         }
+        if (!(getWorld() instanceof ServerWorld)) return;
 
         ParticleFX.coldEffect(entityHitResult.getEntity().getWorld(), entityHitResult.getEntity());
-        entity.damage(this.getOwner().getDamageSources().playerAttack((PlayerEntity)this.getOwner()), 4);
-        entity.damage(this.getOwner().getDamageSources().freeze(), 1);
+        entity.damage(((ServerWorld)getWorld()), this.getOwner().getDamageSources().playerAttack((PlayerEntity)this.getOwner()), 4);
+        entity.damage((ServerWorld) getWorld(), this.getOwner().getDamageSources().freeze(), 1);
         this.getWorld().playSound(this, this.getBlockPos(), SoundEvents.BLOCK_SNOW_BREAK, SoundCategory.NEUTRAL, 1, 1);
 
-        this.kill();
+        this.kill((ServerWorld) getWorld());
 
     }
 
     @Override
     public void tick() {
         super.tick();
+        if (!(getWorld() instanceof ServerWorld)) return;
         if ((this.getVelocity().x <= 0.1 && this.getVelocity().y <= 0.1 && this.getVelocity().z <= 0.1) && this.age > 20) {
             ParticleFX.coldEffect(this.getWorld(), this);
-            this.kill();
+            this.kill((ServerWorld) getWorld());
         }
     }
 
@@ -88,11 +92,13 @@ public class BoltOfIceEntity extends ThrownItemEntity {
     }
 
     protected void onCollision(HitResult hitResult) {
+
+        if (!(getWorld() instanceof ServerWorld)) return;
+
         super.onCollision(hitResult);
 
-
         ParticleFX.coldEffect(this.getWorld(), this);
-        this.kill();
+        this.kill((ServerWorld) getWorld());
     }
 
 

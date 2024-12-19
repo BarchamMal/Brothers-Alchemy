@@ -13,12 +13,13 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-import static net.barch.brosalch.BrothersAlchemy.BAItemGrouper;
-import static net.barch.brosalch.BrothersAlchemy.NAMESPACE;
+import static net.barch.brosalch.BrothersAlchemy.*;
+import static net.barch.brosalch.BrothersAlchemy.createItem;
 import static net.barch.brosalch.MagicIngredients.AppleIngredients.APPLE_PULP;
 import static net.barch.brosalch.MagicIngredients.AppleIngredients.APPLE_COOKIE;
 import static net.barch.brosalch.MagicIngredients.AppleIngredients.APPLE_TEA;
 import static net.barch.brosalch.MagicIngredients.AppleIngredients.APPLE_EXTRACT;
+import static net.barch.brosalch.Miscellaneous.Miscellaneous.getCookieFood;
 
 public class WheatIngredients {
 
@@ -26,26 +27,16 @@ public class WheatIngredients {
     public static final StatusEffectInstance WHEAT_TEA_EFFECT = new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, Miscellaneous.TEA_TIME, Miscellaneous.TEA_STRENGTH);
     public static final StatusEffectInstance WHEAT_COOKIE_EFFECT = new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, Miscellaneous.COOKIE_TIME, Miscellaneous.COOKIE_STRENGTH);
 
-    public static final FoodComponent WHEAT_COOKIE_FOOD = new FoodComponent.Builder().alwaysEdible().nutrition(3).saturationModifier(2).snack().statusEffect(WHEAT_COOKIE_EFFECT, 1).build();
+    public static final FoodComponent WHEAT_COOKIE_FOOD = new FoodComponent.Builder().alwaysEdible().nutrition(3).saturationModifier(2).build();
 
-    public static final Item WHEAT_PULP = new Item(new Item.Settings());
-    public static final Item WHEAT_COOKIE = new Item(new Item.Settings().food(WHEAT_COOKIE_FOOD));
-    public static final TeaItem WHEAT_TEA = new TeaItem(new Item.Settings(), WHEAT_TEA_EFFECT);
-    public static final Item WHEAT_EXTRACT = new Item(new Item.Settings().recipeRemainder(Items.GLASS_BOTTLE));
+    public static final Item WHEAT_PULP = createItem("wheat_pulp", Item.class, new Item.Settings());
+    public static final Item WHEAT_COOKIE = createItem("wheat_cookie", new Item.Settings(), WHEAT_COOKIE_FOOD, getCookieFood(WHEAT_COOKIE_EFFECT));
+    public static final TeaItem WHEAT_TEA = createItem("wheat_tea", new Item.Settings(), WHEAT_TEA_EFFECT);
+    public static final Item WHEAT_EXTRACT = createItem("wheat_extract", Item.class, new Item.Settings().recipeRemainder(Items.GLASS_BOTTLE));
 
 
     public static void RegisterAll() {
-        RegisterItems();
         GroupItems();
-    }
-
-    public static void RegisterItems() {
-
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "wheat_pulp"), WHEAT_PULP);
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "wheat_cookie"), WHEAT_COOKIE);
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "wheat_tea"), WHEAT_TEA);
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "wheat_extract"), WHEAT_EXTRACT);
-
     }
 
     public static void GroupItems() {

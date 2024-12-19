@@ -1,25 +1,19 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "lvl_zero",
-  "key": {
-    "#": {
-      "item": "brothers-alchemy:fire_extract"
+    "type": "minecraft:crafting_shaped",
+    "category": "lvl_zero",
+    "key": {
+        "#": "brothers-alchemy:fire_extract",
+        "%": "brothers-alchemy:cold_extract",
+        "$": "minecraft:glass_bottle"
     },
-    "%": {
-      "item": "brothers-alchemy:cold_extract"
+    "pattern": [
+        "#  ",
+        " $ ",
+        "  %"
+    ],
+    "result": {
+        "count": 1,
+        "id": "brothers-alchemy:biomecraft"
     },
-    "$": {
-      "item": "minecraft:glass_bottle"
-    }
-  },
-  "pattern": [
-    "#  ",
-    " $ ",
-    "  %"
-  ],
-  "result": {
-    "count": 1,
-    "id": "brothers-alchemy:biomecraft"
-  },
-  "show_notification": true
+    "show_notification": true
 }

@@ -4,12 +4,19 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.barch.barch_lib.Items.ItemGroupItem;
 import net.minecraft.component.ComponentType;
+import net.minecraft.component.type.ConsumableComponent;
+import net.minecraft.component.type.ConsumableComponents;
+import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.item.consume.ApplyEffectsConsumeEffect;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
 
 import static net.barch.brosalch.BrothersAlchemy.*;
@@ -34,21 +41,15 @@ public class Miscellaneous {
     public static final int SPELL_LVL_2 = 1*TICKS*SECONDS;
     public static final int SPELL_LVL_3 = 2*TICKS*SECONDS;
 
-    public static final Item TEACUP = new Item(new Item.Settings());
-    public static final Item DIAMOND_PULPIFIER = new Item(new Item.Settings().maxCount(1).recipeRemainder(TEACUP));
+    public static final Item TEACUP = createItem("teacup", Item.class, new Item.Settings());
+    public static final Item DIAMOND_PULPIFIER = createItem("diamond_pulpifier", Item.class, new Item.Settings().maxCount(1).recipeRemainder(TEACUP));
 
-
-
-    public static void RegisterAll() {
-        RegisterItems();
-        GroupItems();
+    public static ConsumableComponent getCookieFood(StatusEffectInstance effectInstance) {
+        return ConsumableComponents.food().consumeEffect(new ApplyEffectsConsumeEffect(effectInstance)).consumeSeconds(.8f).build();
     }
 
-    public static void RegisterItems() {
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "teacup"), TEACUP);
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "diamond_pulpifier"), DIAMOND_PULPIFIER);
-
-        LOGGER.info(Registries.ITEM.getId(DIAMOND_PULPIFIER.getRecipeRemainder()).toTranslationKey());
+    public static void RegisterAll() {
+        GroupItems();
     }
 
     public static void GroupItems() {

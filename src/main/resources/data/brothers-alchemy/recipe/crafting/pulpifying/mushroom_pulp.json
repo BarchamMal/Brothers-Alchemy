@@ -1,20 +1,14 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "group": "pulp",
-  "ingredients": [
-    {
-      "item": "minecraft:brown_mushroom"
-    },
-    {
-      "item": "minecraft:red_mushroom"
-    },
-    {
-      "item": "brothers-alchemy:diamond_pulpifier"
+    "type": "minecraft:crafting_shapeless",
+    "category": "misc",
+    "group": "pulp",
+    "ingredients": [
+        "minecraft:brown_mushroom",
+        "minecraft:red_mushroom",
+        "brothers-alchemy:diamond_pulpifier"
+    ],
+    "result": {
+        "count": 2,
+        "id": "brothers-alchemy:mushroom_pulp"
     }
-  ],
-  "result": {
-    "count": 2,
-    "id": "brothers-alchemy:mushroom_pulp"
-  }
 }

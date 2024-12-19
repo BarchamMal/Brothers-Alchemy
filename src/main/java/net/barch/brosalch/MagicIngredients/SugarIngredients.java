@@ -13,12 +13,13 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-import static net.barch.brosalch.BrothersAlchemy.BAItemGrouper;
-import static net.barch.brosalch.BrothersAlchemy.NAMESPACE;
+import static net.barch.brosalch.BrothersAlchemy.*;
+import static net.barch.brosalch.BrothersAlchemy.createItem;
 import static net.barch.brosalch.MagicIngredients.CarrotIngredients.CARROT_PULP;
 import static net.barch.brosalch.MagicIngredients.CarrotIngredients.CARROT_COOKIE;
 import static net.barch.brosalch.MagicIngredients.CarrotIngredients.CARROT_TEA;
 import static net.barch.brosalch.MagicIngredients.CarrotIngredients.CARROT_EXTRACT;
+import static net.barch.brosalch.Miscellaneous.Miscellaneous.getCookieFood;
 
 public class
 SugarIngredients {
@@ -27,26 +28,16 @@ SugarIngredients {
     public static final StatusEffectInstance SUGAR_TEA_EFFECT = new StatusEffectInstance(StatusEffects.SPEED, Miscellaneous.TEA_TIME, Miscellaneous.TEA_STRENGTH);
     public static final StatusEffectInstance SUGAR_COOKIE_EFFECT = new StatusEffectInstance(StatusEffects.SPEED, Miscellaneous.COOKIE_TIME, Miscellaneous.COOKIE_STRENGTH);
 
-    public static final FoodComponent SUGAR_COOKIE_FOOD = new FoodComponent.Builder().alwaysEdible().nutrition(3).saturationModifier(2).snack().statusEffect(SUGAR_COOKIE_EFFECT, 1).build();
+    public static final FoodComponent SUGAR_COOKIE_FOOD = new FoodComponent.Builder().alwaysEdible().nutrition(3).saturationModifier(2).build();
 
-    public static final Item SUGAR_PULP = new Item(new Item.Settings());
-    public static final Item SUGAR_COOKIE = new Item(new Item.Settings().food(SUGAR_COOKIE_FOOD));
-    public static final TeaItem SUGAR_TEA = new TeaItem(new Item.Settings(), SUGAR_TEA_EFFECT);
-    public static final Item SUGAR_EXTRACT = new Item(new Item.Settings().recipeRemainder(Items.GLASS_BOTTLE));
+    public static final Item SUGAR_PULP = createItem("sugar_pulp", Item.class, new Item.Settings());
+    public static final Item SUGAR_COOKIE = createItem("sugar_cookie", new Item.Settings(), SUGAR_COOKIE_FOOD, getCookieFood(SUGAR_COOKIE_EFFECT));
+    public static final TeaItem SUGAR_TEA = createItem("sugar_tea", new Item.Settings(), SUGAR_TEA_EFFECT);
+    public static final Item SUGAR_EXTRACT = createItem("sugar_extract", Item.class, new Item.Settings().recipeRemainder(Items.GLASS_BOTTLE));
 
 
     public static void RegisterAll() {
-        RegisterItems();
         GroupItems();
-    }
-
-    public static void RegisterItems() {
-
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "sugar_pulp"), SUGAR_PULP);
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "sugar_cookie"), SUGAR_COOKIE);
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "sugar_tea"), SUGAR_TEA);
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "sugar_extract"), SUGAR_EXTRACT);
-
     }
 
     public static void GroupItems() {

@@ -21,7 +21,7 @@ public class Freeze extends Spell {
 
     @Override
     public ActionResult useEntity(ItemStack stack, PlayerEntity user, LivingEntity entity, Hand hand) {
-        if (!user.getItemCooldownManager().isCoolingDown(stack.getItem())) {
+        if (!user.getItemCooldownManager().isCoolingDown(stack)) {
             StatusEffectInstance statusEffect = new StatusEffectInstance(StatusEffects.WEAKNESS, SPELL_LVL_0, 10);
             StatusEffectInstance statusEffect1 = new StatusEffectInstance(StatusEffects.SLOWNESS, SPELL_LVL_0, 10);
             entity.addStatusEffect(statusEffect, user);

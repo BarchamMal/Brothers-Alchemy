@@ -1,24 +1,18 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "equipment",
-  "key": {
-    "G": {
-      "item": "minecraft:granite"
+    "type": "minecraft:crafting_shaped",
+    "category": "equipment",
+    "key": {
+        "G": "minecraft:granite",
+        "D": "minecraft:diamond",
+        "S": "minecraft:smooth_stone"
     },
-    "D": {
-      "item": "minecraft:diamond"
+    "pattern": [
+        "GGG",
+        "SDS",
+        "SSS"
+    ],
+    "result": {
+        "id": "brothers-alchemy:diamond_pulpifier"
     },
-    "S": {
-      "item": "minecraft:smooth_stone"
-    }
-  },
-  "pattern": [
-    "GGG",
-    "SDS",
-    "SSS"
-  ],
-  "result": {
-    "id": "brothers-alchemy:diamond_pulpifier"
-  },
-  "show_notification": true
+    "show_notification": true
 }

@@ -1,17 +1,13 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "group": "extract",
-  "ingredients": [
-    {
-      "item": "brothers-alchemy:seaweed_pulp"
-    },
-    {
-      "item": "minecraft:glass_bottle"
+    "type": "minecraft:crafting_shapeless",
+    "category": "misc",
+    "group": "extract",
+    "ingredients": [
+        "brothers-alchemy:seaweed_pulp",
+        "minecraft:glass_bottle"
+    ],
+    "result": {
+        "count": 1,
+        "id": "brothers-alchemy:seaweed_extract"
     }
-  ],
-  "result": {
-    "count": 1,
-    "id": "brothers-alchemy:seaweed_extract"
-  }
 }

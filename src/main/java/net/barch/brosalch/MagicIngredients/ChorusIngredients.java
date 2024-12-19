@@ -13,12 +13,13 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-import static net.barch.brosalch.BrothersAlchemy.BAItemGrouper;
-import static net.barch.brosalch.BrothersAlchemy.NAMESPACE;
+import static net.barch.brosalch.BrothersAlchemy.*;
+import static net.barch.brosalch.BrothersAlchemy.createItem;
 import static net.barch.brosalch.MagicIngredients.SeaweedIngredients.SEAWEED_PULP;
 import static net.barch.brosalch.MagicIngredients.SeaweedIngredients.SEAWEED_COOKIE;
 import static net.barch.brosalch.MagicIngredients.SeaweedIngredients.SEAWEED_TEA;
 import static net.barch.brosalch.MagicIngredients.SeaweedIngredients.SEAWEED_EXTRACT;
+import static net.barch.brosalch.Miscellaneous.Miscellaneous.getCookieFood;
 
 public class ChorusIngredients {
 
@@ -26,26 +27,16 @@ public class ChorusIngredients {
     public static final StatusEffectInstance CHORUS_TEA_EFFECT = new StatusEffectInstance(StatusEffects.LEVITATION, Miscellaneous.TEA_TIME, Miscellaneous.TEA_STRENGTH);
     public static final StatusEffectInstance CHORUS_COOKIE_EFFECT = new StatusEffectInstance(StatusEffects.LEVITATION, Miscellaneous.COOKIE_TIME, Miscellaneous.COOKIE_STRENGTH);
 
-    public static final FoodComponent CHORUS_COOKIE_FOOD = new FoodComponent.Builder().alwaysEdible().nutrition(3).saturationModifier(2).snack().statusEffect(CHORUS_COOKIE_EFFECT, 1).build();
+    public static final FoodComponent CHORUS_COOKIE_FOOD = new FoodComponent.Builder().alwaysEdible().nutrition(3).saturationModifier(2).build();
 
-    public static final Item CHORUS_PULP = new Item(new Item.Settings());
-    public static final Item CHORUS_COOKIE = new Item(new Item.Settings().food(CHORUS_COOKIE_FOOD));
-    public static final TeaItem CHORUS_TEA = new TeaItem(new Item.Settings(), CHORUS_TEA_EFFECT);
-    public static final Item CHORUS_EXTRACT = new Item(new Item.Settings().recipeRemainder(Items.GLASS_BOTTLE));
+    public static final Item CHORUS_PULP = createItem("chorus_pulp", Item.class, new Item.Settings());
+    public static final Item CHORUS_COOKIE = createItem("chorus_cookie", new Item.Settings(), CHORUS_COOKIE_FOOD, getCookieFood(CHORUS_COOKIE_EFFECT));
+    public static final TeaItem CHORUS_TEA = createItem("chorus_tea", new Item.Settings(), CHORUS_TEA_EFFECT);
+    public static final Item CHORUS_EXTRACT = createItem("chorus_extract", Item.class, new Item.Settings().recipeRemainder(Items.GLASS_BOTTLE));
 
 
     public static void RegisterAll() {
-        RegisterItems();
         GroupItems();
-    }
-
-    public static void RegisterItems() {
-
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "chorus_pulp"), CHORUS_PULP);
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "chorus_cookie"), CHORUS_COOKIE);
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "chorus_tea"), CHORUS_TEA);
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "chorus_extract"), CHORUS_EXTRACT);
-
     }
 
     public static void GroupItems() {

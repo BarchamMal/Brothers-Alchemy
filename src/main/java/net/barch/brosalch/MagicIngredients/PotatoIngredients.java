@@ -13,12 +13,13 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-import static net.barch.brosalch.BrothersAlchemy.BAItemGrouper;
-import static net.barch.brosalch.BrothersAlchemy.NAMESPACE;
+import static net.barch.brosalch.BrothersAlchemy.*;
+import static net.barch.brosalch.BrothersAlchemy.createItem;
 import static net.barch.brosalch.MagicIngredients.MushroomIngredients.MUSHROOM_PULP;
 import static net.barch.brosalch.MagicIngredients.MushroomIngredients.MUSHROOM_COOKIE;
 import static net.barch.brosalch.MagicIngredients.MushroomIngredients.MUSHROOM_TEA;
 import static net.barch.brosalch.MagicIngredients.MushroomIngredients.MUSHROOM_EXTRACT;
+import static net.barch.brosalch.Miscellaneous.Miscellaneous.getCookieFood;
 
 public class PotatoIngredients {
 
@@ -26,26 +27,16 @@ public class PotatoIngredients {
     public static final StatusEffectInstance POTATO_TEA_EFFECT = new StatusEffectInstance(StatusEffects.ABSORPTION, Miscellaneous.TEA_TIME, Miscellaneous.TEA_STRENGTH);
     public static final StatusEffectInstance POTATO_COOKIE_EFFECT = new StatusEffectInstance(StatusEffects.ABSORPTION, Miscellaneous.COOKIE_TIME, Miscellaneous.COOKIE_STRENGTH);
 
-    public static final FoodComponent POTATO_COOKIE_FOOD = new FoodComponent.Builder().alwaysEdible().nutrition(3).saturationModifier(2).snack().statusEffect(POTATO_COOKIE_EFFECT, 1).build();
+    public static final FoodComponent POTATO_COOKIE_FOOD = new FoodComponent.Builder().alwaysEdible().nutrition(3).saturationModifier(2).build();
 
-    public static final Item POTATO_PULP = new Item(new Item.Settings());
-    public static final Item POTATO_COOKIE = new Item(new Item.Settings().food(POTATO_COOKIE_FOOD));
-    public static final TeaItem POTATO_TEA = new TeaItem(new Item.Settings(), POTATO_TEA_EFFECT);
-    public static final Item POTATO_EXTRACT = new Item(new Item.Settings().recipeRemainder(Items.GLASS_BOTTLE));
+    public static final Item POTATO_PULP = createItem("potato_pulp", Item.class, new Item.Settings());
+    public static final Item POTATO_COOKIE = createItem("potato_cookie", new Item.Settings(), POTATO_COOKIE_FOOD, getCookieFood(POTATO_COOKIE_EFFECT));
+    public static final TeaItem POTATO_TEA = createItem("potato_tea", new Item.Settings(), POTATO_TEA_EFFECT);
+    public static final Item POTATO_EXTRACT = createItem("potato_extract", Item.class, new Item.Settings().recipeRemainder(Items.GLASS_BOTTLE));
 
 
     public static void RegisterAll() {
-        RegisterItems();
         GroupItems();
-    }
-
-    public static void RegisterItems() {
-
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "potato_pulp"), POTATO_PULP);
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "potato_cookie"), POTATO_COOKIE);
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "potato_tea"), POTATO_TEA);
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "potato_extract"), POTATO_EXTRACT);
-
     }
 
     public static void GroupItems() {

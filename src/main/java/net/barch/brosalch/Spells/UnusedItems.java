@@ -9,13 +9,9 @@ import static net.barch.brosalch.BrothersAlchemy.*;
 
 public class UnusedItems {
 
-    public static final Item RAY_OF_FROST = new Item(new Item.Settings());
+    public static final Item RAY_OF_FROST = createItem("ray_of_frost", Item.class, new Item.Settings());
 
     public static void RegisterAll() {
-        RegisterItems();
     }
 
-    public static void RegisterItems() {
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "bolt_of_ice_item"), RAY_OF_FROST);
-    }
 }

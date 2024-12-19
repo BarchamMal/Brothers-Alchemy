@@ -1,17 +1,13 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "group": "extract",
-  "ingredients": [
-    {
-      "item": "brothers-alchemy:melon_pulp"
-    },
-    {
-      "item": "minecraft:glass_bottle"
+    "type": "minecraft:crafting_shapeless",
+    "category": "misc",
+    "group": "extract",
+    "ingredients": [
+        "brothers-alchemy:melon_pulp",
+        "minecraft:glass_bottle"
+    ],
+    "result": {
+        "count": 1,
+        "id": "brothers-alchemy:melon_extract"
     }
-  ],
-  "result": {
-    "count": 1,
-    "id": "brothers-alchemy:melon_extract"
-  }
 }

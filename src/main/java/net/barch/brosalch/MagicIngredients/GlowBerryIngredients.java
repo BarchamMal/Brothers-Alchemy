@@ -13,12 +13,13 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-import static net.barch.brosalch.BrothersAlchemy.BAItemGrouper;
-import static net.barch.brosalch.BrothersAlchemy.NAMESPACE;
+import static net.barch.brosalch.BrothersAlchemy.*;
+import static net.barch.brosalch.BrothersAlchemy.createItem;
 import static net.barch.brosalch.MagicIngredients.ChorusIngredients.CHORUS_PULP;
 import static net.barch.brosalch.MagicIngredients.ChorusIngredients.CHORUS_COOKIE;
 import static net.barch.brosalch.MagicIngredients.ChorusIngredients.CHORUS_TEA;
 import static net.barch.brosalch.MagicIngredients.ChorusIngredients.CHORUS_EXTRACT;
+import static net.barch.brosalch.Miscellaneous.Miscellaneous.getCookieFood;
 
 public class GlowBerryIngredients {
 
@@ -26,26 +27,16 @@ public class GlowBerryIngredients {
     public static final StatusEffectInstance GLOW_BERRY_TEA_EFFECT = new StatusEffectInstance(StatusEffects.GLOWING, Miscellaneous.TEA_TIME, Miscellaneous.TEA_STRENGTH);
     public static final StatusEffectInstance GLOW_BERRY_COOKIE_EFFECT = new StatusEffectInstance(StatusEffects.GLOWING, Miscellaneous.COOKIE_TIME, Miscellaneous.COOKIE_STRENGTH);
 
-    public static final FoodComponent GLOW_BERRY_COOKIE_FOOD = new FoodComponent.Builder().alwaysEdible().nutrition(3).saturationModifier(2).snack().statusEffect(GLOW_BERRY_COOKIE_EFFECT, 1).build();
+    public static final FoodComponent GLOW_BERRY_COOKIE_FOOD = new FoodComponent.Builder().alwaysEdible().nutrition(3).saturationModifier(2).build();
 
-    public static final Item GLOW_BERRY_PULP = new Item(new Item.Settings());
-    public static final Item GLOW_BERRY_COOKIE = new Item(new Item.Settings().food(GLOW_BERRY_COOKIE_FOOD));
-    public static final TeaItem GLOW_BERRY_TEA = new TeaItem(new Item.Settings(), GLOW_BERRY_TEA_EFFECT);
-    public static final Item GLOW_BERRY_EXTRACT = new Item(new Item.Settings().recipeRemainder(Items.GLASS_BOTTLE));
+    public static final Item GLOW_BERRY_PULP = createItem("glow_berry_pulp", Item.class, new Item.Settings());
+    public static final Item GLOW_BERRY_COOKIE = createItem("glow_berry_cookie", new Item.Settings(), GLOW_BERRY_COOKIE_FOOD, getCookieFood(GLOW_BERRY_COOKIE_EFFECT));
+    public static final TeaItem GLOW_BERRY_TEA = createItem("glow_berry_tea", new Item.Settings(), GLOW_BERRY_TEA_EFFECT);
+    public static final Item GLOW_BERRY_EXTRACT = createItem("glow_berry_extract", Item.class, new Item.Settings().recipeRemainder(Items.GLASS_BOTTLE));
 
 
     public static void RegisterAll() {
-        RegisterItems();
         GroupItems();
-    }
-
-    public static void RegisterItems() {
-
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "glow_berry_pulp"), GLOW_BERRY_PULP);
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "glow_berry_cookie"), GLOW_BERRY_COOKIE);
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "glow_berry_tea"), GLOW_BERRY_TEA);
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "glow_berry_extract"), GLOW_BERRY_EXTRACT);
-
     }
 
     public static void GroupItems() {

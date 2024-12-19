@@ -4,10 +4,16 @@ import net.barch.barch_lib.Items.ItemGrouper;
 import net.barch.brosalch.MagicIngredients.MagicIngredients;
 import net.barch.brosalch.Miscellaneous.AlchemyComponents;
 import net.barch.brosalch.Miscellaneous.Miscellaneous;
+import net.barch.brosalch.Spells.Spell;
+import net.barch.brosalch.Spells.SpellExtractItem;
 import net.barch.brosalch.Spells.Spells;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.minecraft.component.type.ConsumableComponent;
+import net.minecraft.component.type.FoodComponent;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
@@ -18,6 +24,8 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.lang.reflect.Constructor;
 
 import static net.barch.brosalch.Miscellaneous.Miscellaneous.TEACUP;
 import static net.barch.brosalch.Spells.Spells.LIGHT_EXTRACT;
@@ -62,4 +70,43 @@ public class BrothersAlchemy implements ModInitializer {
 		AlchemyComponents.initialize();
 
 	}
+
+
+	public static Item createItem(String name, Class<? extends Item> itemClass, Item.Settings settings) {
+		Identifier id = Identifier.of(NAMESPACE, name);
+		RegistryKey<Item> key = RegistryKey.of(RegistryKeys.ITEM, id);
+
+		try {
+			// Get the constructor that accepts Item.Settings as a parameter
+			Constructor<? extends Item> constructor = itemClass.getConstructor(Item.Settings.class);
+			// Create a new instance using the constructor
+			Item item = constructor.newInstance(settings.registryKey(key));
+			// Register the item and return it
+			return Registry.register(Registries.ITEM, key, item);
+		} catch (Exception e) {
+			throw new RuntimeException("Failed to create item: " + name, e);
+		}
+	}
+
+	public static Item createItem(String name, Item.Settings settings, FoodComponent foodComponent, ConsumableComponent consumableComponent) {
+		Identifier id = Identifier.of(NAMESPACE, name);
+		RegistryKey<Item> key = RegistryKey.of(RegistryKeys.ITEM, id);
+
+		return Registry.register(Registries.ITEM, key, new Item(settings.registryKey(key).food(foodComponent, consumableComponent)));
+	}
+
+	public static TeaItem createItem(String name, Item.Settings settings, StatusEffectInstance effectInstance) {
+		Identifier id = Identifier.of(NAMESPACE, name);
+		RegistryKey<Item> key = RegistryKey.of(RegistryKeys.ITEM, id);
+
+		return Registry.register(Registries.ITEM, key, new TeaItem(settings.registryKey(key), effectInstance));
+	}
+
+	public static SpellExtractItem createItem(String name, Item.Settings settings, Spell spell) {
+		Identifier id = Identifier.of(NAMESPACE, name);
+		RegistryKey<Item> key = RegistryKey.of(RegistryKeys.ITEM, id);
+
+		return Registry.register(Registries.ITEM, key, new SpellExtractItem(settings.registryKey(key), spell));
+	}
+
 }

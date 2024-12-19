@@ -13,12 +13,13 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-import static net.barch.brosalch.BrothersAlchemy.BAItemGrouper;
-import static net.barch.brosalch.BrothersAlchemy.NAMESPACE;
+import static net.barch.brosalch.BrothersAlchemy.*;
+import static net.barch.brosalch.BrothersAlchemy.createItem;
 import static net.barch.brosalch.MagicIngredients.WheatIngredients.WHEAT_PULP;
 import static net.barch.brosalch.MagicIngredients.WheatIngredients.WHEAT_COOKIE;
 import static net.barch.brosalch.MagicIngredients.WheatIngredients.WHEAT_TEA;
 import static net.barch.brosalch.MagicIngredients.WheatIngredients.WHEAT_EXTRACT;
+import static net.barch.brosalch.Miscellaneous.Miscellaneous.getCookieFood;
 
 public class MushroomIngredients {
 
@@ -26,26 +27,16 @@ public class MushroomIngredients {
     public static final StatusEffectInstance MUSHROOM_TEA_EFFECT = new StatusEffectInstance(StatusEffects.SATURATION, Miscellaneous.TEA_TIME, Miscellaneous.TEA_STRENGTH);
     public static final StatusEffectInstance MUSHROOM_COOKIE_EFFECT = new StatusEffectInstance(StatusEffects.SATURATION, Miscellaneous.COOKIE_TIME, Miscellaneous.COOKIE_STRENGTH);
 
-    public static final FoodComponent MUSHROOM_COOKIE_FOOD = new FoodComponent.Builder().alwaysEdible().nutrition(3).saturationModifier(2).snack().statusEffect(MUSHROOM_COOKIE_EFFECT, 1).build();
+    public static final FoodComponent MUSHROOM_COOKIE_FOOD = new FoodComponent.Builder().alwaysEdible().nutrition(3).saturationModifier(2).build();
 
-    public static final Item MUSHROOM_PULP = new Item(new Item.Settings());
-    public static final Item MUSHROOM_COOKIE = new Item(new Item.Settings().food(MUSHROOM_COOKIE_FOOD));
-    public static final TeaItem MUSHROOM_TEA = new TeaItem(new Item.Settings(), MUSHROOM_TEA_EFFECT);
-    public static final Item MUSHROOM_EXTRACT = new Item(new Item.Settings().recipeRemainder(Items.GLASS_BOTTLE));
+    public static final Item MUSHROOM_PULP = createItem("mushroom_pulp", Item.class, new Item.Settings());
+    public static final Item MUSHROOM_COOKIE = createItem("mushroom_cookie", new Item.Settings(), MUSHROOM_COOKIE_FOOD, getCookieFood(MUSHROOM_COOKIE_EFFECT));
+    public static final TeaItem MUSHROOM_TEA = createItem("mushroom_tea", new Item.Settings(), MUSHROOM_TEA_EFFECT);
+    public static final Item MUSHROOM_EXTRACT = createItem("mushroom_extract", Item.class, new Item.Settings().recipeRemainder(Items.GLASS_BOTTLE));
 
 
     public static void RegisterAll() {
-        RegisterItems();
         GroupItems();
-    }
-
-    public static void RegisterItems() {
-
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "mushroom_pulp"), MUSHROOM_PULP);
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "mushroom_cookie"), MUSHROOM_COOKIE);
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "mushroom_tea"), MUSHROOM_TEA);
-        Registry.register(Registries.ITEM, Identifier.of(NAMESPACE, "mushroom_extract"), MUSHROOM_EXTRACT);
-
     }
 
     public static void GroupItems() {

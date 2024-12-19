@@ -1,17 +1,13 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "group": "pulp",
-  "ingredients": [
-    {
-      "item": "minecraft:melon_slice"
-    },
-    {
-      "item": "brothers-alchemy:diamond_pulpifier"
+    "type": "minecraft:crafting_shapeless",
+    "category": "misc",
+    "group": "pulp",
+    "ingredients": [
+        "minecraft:melon_slice",
+        "brothers-alchemy:diamond_pulpifier"
+    ],
+    "result": {
+        "count": 1,
+        "id": "brothers-alchemy:melon_pulp"
     }
-  ],
-  "result": {
-    "count": 1,
-    "id": "brothers-alchemy:melon_pulp"
-  }
 }

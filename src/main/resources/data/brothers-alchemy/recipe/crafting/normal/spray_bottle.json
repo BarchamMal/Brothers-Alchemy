@@ -1,24 +1,18 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "equipment",
-  "key": {
-    "C": {
-      "item": "minecraft:copper_ingot"
+    "type": "minecraft:crafting_shaped",
+    "category": "equipment",
+    "key": {
+        "C": "minecraft:copper_ingot",
+        "I": "minecraft:gold_ingot",
+        "G": "minecraft:glass_bottle"
     },
-    "I": {
-      "item": "minecraft:gold_ingot"
+    "pattern": [
+        " CC",
+        "CII",
+        "CGI"
+    ],
+    "result": {
+        "id": "brothers-alchemy:spray_bottle"
     },
-    "G": {
-      "item": "minecraft:glass_bottle"
-    }
-  },
-  "pattern": [
-    " CC",
-    "CII",
-    "CGI"
-  ],
-  "result": {
-    "id": "brothers-alchemy:spray_bottle"
-  },
-  "show_notification": true
+    "show_notification": true
 }

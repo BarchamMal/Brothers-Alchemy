@@ -1,17 +1,13 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "group": "tea",
-  "ingredients": [
-    {
-      "item": "brothers-alchemy:teacup"
-    },
-    {
-      "item": "brothers-alchemy:melon_pulp"
+    "type": "minecraft:crafting_shapeless",
+    "category": "misc",
+    "group": "tea",
+    "ingredients": [
+        "brothers-alchemy:teacup",
+        "brothers-alchemy:melon_pulp"
+    ],
+    "result": {
+        "count": 1,
+        "id": "brothers-alchemy:melon_tea"
     }
-  ],
-  "result": {
-    "count": 1,
-    "id": "brothers-alchemy:melon_tea"
-  }
 }
